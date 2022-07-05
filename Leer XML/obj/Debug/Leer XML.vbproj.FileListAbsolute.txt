@@ -1,0 +1,24 @@
+D:\Repositorios\Leer XML\bin\Debug\Leer XML.exe
+D:\Repositorios\Leer XML\bin\Debug\Leer XML.pdb
+D:\Repositorios\Leer XML\bin\Debug\Leer XML.xml
+D:\Repositorios\Leer XML\obj\Debug\Leer XML.vbprojAssemblyReference.cache
+D:\Repositorios\Leer XML\obj\Debug\Leer_XML.Form1.resources
+D:\Repositorios\Leer XML\obj\Debug\Leer_XML.Resources.resources
+D:\Repositorios\Leer XML\obj\Debug\Leer XML.vbproj.GenerateResource.cache
+D:\Repositorios\Leer XML\obj\Debug\Leer XML.vbproj.CoreCompileInputs.cache
+D:\Repositorios\Leer XML\obj\Debug\Leer XML.exe
+D:\Repositorios\Leer XML\obj\Debug\Leer XML.xml
+D:\Repositorios\Leer XML\obj\Debug\Leer XML.pdb
+C:\Users\GIANCARLO\Desktop\Leer XML\obj\Debug\Leer XML.exe
+C:\Users\GIANCARLO\Desktop\Leer XML\obj\Debug\Leer XML.xml
+C:\Users\GIANCARLO\Desktop\Leer XML\obj\Debug\Leer XML.pdb
+C:\Users\GIANCARLO\Desktop\Leer XML\bin\Debug\Leer XML.exe
+C:\Users\GIANCARLO\Desktop\Leer XML\bin\Debug\Leer XML.pdb
+C:\Users\GIANCARLO\Desktop\Leer XML\bin\Debug\Leer XML.xml
+C:\Users\GIANCARLO\Desktop\Leer XML\obj\Debug\Leer XML.vbprojResolveAssemblyReference.cache
+C:\Users\GIANCARLO\Desktop\Leer XML\obj\Debug\Leer_XML.Form1.resources
+C:\Users\GIANCARLO\Desktop\Leer XML\obj\Debug\Leer_XML.Resources.resources
+C:\Users\GIANCARLO\Desktop\Leer XML\obj\Debug\Leer XML.vbproj.GenerateResource.Cache
+D:\Repositorios\Leer XML\obj\Debug\Leer_XML.FrmPreliminar.resources
+D:\Repositorios\Leer XML\obj\Debug\Leer_XML.FrmCliente.resources
+D:\Repositorios\Leer XML\obj\Debug\Leer_XML.FrmEmisor.resources
