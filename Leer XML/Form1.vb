@@ -27,6 +27,7 @@ Public Class Form1
         OpenFileDialog1.FilterIndex = 4
         If OpenFileDialog1.ShowDialog() = Windows.Forms.DialogResult.OK Then
             lblFilePath = OpenFileDialog1.FileName
+            TxtArchivoXml.Text = lblFilePath
             ContenidoXML = LeerContenidoXML(lblFilePath)
             CargarDocumento(lblFilePath)
         End If
@@ -86,7 +87,7 @@ Public Class Form1
         TxtEmision.Text = Comprobante.Documento.FechaEmision.ToShortDateString
 
         TxtSubTotal.Text = Comprobante.IGV.MontoBase
-        LblIgvPorcentaje.Text = Comprobante.IGV.Porcentaje & "%"
+        LblIgvPorcentaje.Text = Comprobante.IGV.Porcentaje
         TxtIgvMonto.Text = Comprobante.Documento.SumaIgv
         TxtTotalFactura.Text = Comprobante.Documento.TotalFactura
 

@@ -31,10 +31,18 @@ Partial Class Form1
         Me.TxtEmisor = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.DgvItems = New System.Windows.Forms.DataGridView()
+        Me.colOrden = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colCantidad = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colCodigo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colDescripcion = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colUnitario = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colPrecioUnitario = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colValorVenta = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.BtnXml = New System.Windows.Forms.Button()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.TabPage3 = New System.Windows.Forms.TabPage()
         Me.lblRazonSocial = New System.Windows.Forms.Label()
         Me.TxtCliente = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
@@ -52,14 +60,6 @@ Partial Class Form1
         Me.LblPrecio = New System.Windows.Forms.Label()
         Me.LblIgvPorcentaje = New System.Windows.Forms.Label()
         Me.TxtTipoOperacion = New System.Windows.Forms.TextBox()
-        Me.TabPage3 = New System.Windows.Forms.TabPage()
-        Me.colOrden = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colCantidad = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colCodigo = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colDescripcion = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colUnitario = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colPrecioUnitario = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colValorVenta = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.btnCliente = New System.Windows.Forms.Button()
         Me.BtnArchivoXml = New System.Windows.Forms.Button()
         Me.btnEmisor = New System.Windows.Forms.Button()
@@ -115,6 +115,73 @@ Partial Class Form1
         Me.DgvItems.Size = New System.Drawing.Size(577, 254)
         Me.DgvItems.TabIndex = 12
         '
+        'colOrden
+        '
+        Me.colOrden.DataPropertyName = "orden"
+        Me.colOrden.FillWeight = 25.0!
+        Me.colOrden.HeaderText = "O#"
+        Me.colOrden.Name = "colOrden"
+        Me.colOrden.ReadOnly = True
+        Me.colOrden.Width = 25
+        '
+        'colCantidad
+        '
+        Me.colCantidad.DataPropertyName = "Cantidad"
+        Me.colCantidad.FillWeight = 50.0!
+        Me.colCantidad.HeaderText = "Cant."
+        Me.colCantidad.Name = "colCantidad"
+        Me.colCantidad.ReadOnly = True
+        Me.colCantidad.Width = 50
+        '
+        'colCodigo
+        '
+        Me.colCodigo.DataPropertyName = "CodigoProducto"
+        Me.colCodigo.HeaderText = "Codigo"
+        Me.colCodigo.Name = "colCodigo"
+        Me.colCodigo.ReadOnly = True
+        '
+        'colDescripcion
+        '
+        Me.colDescripcion.DataPropertyName = "Descripcion"
+        Me.colDescripcion.FillWeight = 300.0!
+        Me.colDescripcion.HeaderText = "Descripción"
+        Me.colDescripcion.Name = "colDescripcion"
+        Me.colDescripcion.ReadOnly = True
+        Me.colDescripcion.Width = 300
+        '
+        'colUnitario
+        '
+        Me.colUnitario.DataPropertyName = "ValorUnitario"
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle1.Format = "N2"
+        DataGridViewCellStyle1.NullValue = Nothing
+        Me.colUnitario.DefaultCellStyle = DataGridViewCellStyle1
+        Me.colUnitario.HeaderText = "Unitario"
+        Me.colUnitario.Name = "colUnitario"
+        Me.colUnitario.ReadOnly = True
+        '
+        'colPrecioUnitario
+        '
+        Me.colPrecioUnitario.DataPropertyName = "ValorVentaPorItem"
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle2.Format = "N2"
+        DataGridViewCellStyle2.NullValue = Nothing
+        Me.colPrecioUnitario.DefaultCellStyle = DataGridViewCellStyle2
+        Me.colPrecioUnitario.HeaderText = "P.unitario"
+        Me.colPrecioUnitario.Name = "colPrecioUnitario"
+        Me.colPrecioUnitario.ReadOnly = True
+        '
+        'colValorVenta
+        '
+        Me.colValorVenta.DataPropertyName = "ValorReferencialUnitarioPorItemNoOnerosa"
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle3.Format = "N2"
+        DataGridViewCellStyle3.NullValue = Nothing
+        Me.colValorVenta.DefaultCellStyle = DataGridViewCellStyle3
+        Me.colValorVenta.HeaderText = "ValorVenta"
+        Me.colValorVenta.Name = "colValorVenta"
+        Me.colValorVenta.ReadOnly = True
+        '
         'BtnXml
         '
         Me.BtnXml.Location = New System.Drawing.Point(3, 417)
@@ -155,6 +222,16 @@ Partial Class Form1
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "Tributos"
         Me.TabPage2.UseVisualStyleBackColor = True
+        '
+        'TabPage3
+        '
+        Me.TabPage3.Location = New System.Drawing.Point(4, 22)
+        Me.TabPage3.Name = "TabPage3"
+        Me.TabPage3.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage3.Size = New System.Drawing.Size(583, 260)
+        Me.TabPage3.TabIndex = 2
+        Me.TabPage3.Text = "Cuotas"
+        Me.TabPage3.UseVisualStyleBackColor = True
         '
         'lblRazonSocial
         '
@@ -291,7 +368,7 @@ Partial Class Form1
         'LblIgvPorcentaje
         '
         Me.LblIgvPorcentaje.AutoSize = True
-        Me.LblIgvPorcentaje.Location = New System.Drawing.Point(462, 439)
+        Me.LblIgvPorcentaje.Location = New System.Drawing.Point(453, 439)
         Me.LblIgvPorcentaje.Name = "LblIgvPorcentaje"
         Me.LblIgvPorcentaje.Size = New System.Drawing.Size(27, 13)
         Me.LblIgvPorcentaje.TabIndex = 40
@@ -304,83 +381,6 @@ Partial Class Form1
         Me.TxtTipoOperacion.ReadOnly = True
         Me.TxtTipoOperacion.Size = New System.Drawing.Size(222, 20)
         Me.TxtTipoOperacion.TabIndex = 41
-        '
-        'TabPage3
-        '
-        Me.TabPage3.Location = New System.Drawing.Point(4, 22)
-        Me.TabPage3.Name = "TabPage3"
-        Me.TabPage3.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage3.Size = New System.Drawing.Size(583, 260)
-        Me.TabPage3.TabIndex = 2
-        Me.TabPage3.Text = "Cuotas"
-        Me.TabPage3.UseVisualStyleBackColor = True
-        '
-        'colOrden
-        '
-        Me.colOrden.DataPropertyName = "orden"
-        Me.colOrden.FillWeight = 25.0!
-        Me.colOrden.HeaderText = "O#"
-        Me.colOrden.Name = "colOrden"
-        Me.colOrden.ReadOnly = True
-        Me.colOrden.Width = 25
-        '
-        'colCantidad
-        '
-        Me.colCantidad.DataPropertyName = "Cantidad"
-        Me.colCantidad.FillWeight = 50.0!
-        Me.colCantidad.HeaderText = "Cant."
-        Me.colCantidad.Name = "colCantidad"
-        Me.colCantidad.ReadOnly = True
-        Me.colCantidad.Width = 50
-        '
-        'colCodigo
-        '
-        Me.colCodigo.DataPropertyName = "CodigoProducto"
-        Me.colCodigo.HeaderText = "Codigo"
-        Me.colCodigo.Name = "colCodigo"
-        Me.colCodigo.ReadOnly = True
-        '
-        'colDescripcion
-        '
-        Me.colDescripcion.DataPropertyName = "Descripcion"
-        Me.colDescripcion.FillWeight = 300.0!
-        Me.colDescripcion.HeaderText = "Descripción"
-        Me.colDescripcion.Name = "colDescripcion"
-        Me.colDescripcion.ReadOnly = True
-        Me.colDescripcion.Width = 300
-        '
-        'colUnitario
-        '
-        Me.colUnitario.DataPropertyName = "ValorUnitario"
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle1.Format = "N2"
-        DataGridViewCellStyle1.NullValue = Nothing
-        Me.colUnitario.DefaultCellStyle = DataGridViewCellStyle1
-        Me.colUnitario.HeaderText = "Unitario"
-        Me.colUnitario.Name = "colUnitario"
-        Me.colUnitario.ReadOnly = True
-        '
-        'colPrecioUnitario
-        '
-        Me.colPrecioUnitario.DataPropertyName = "ValorVentaPorItem"
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle2.Format = "N2"
-        DataGridViewCellStyle2.NullValue = Nothing
-        Me.colPrecioUnitario.DefaultCellStyle = DataGridViewCellStyle2
-        Me.colPrecioUnitario.HeaderText = "P.unitario"
-        Me.colPrecioUnitario.Name = "colPrecioUnitario"
-        Me.colPrecioUnitario.ReadOnly = True
-        '
-        'colValorVenta
-        '
-        Me.colValorVenta.DataPropertyName = "ValorReferencialUnitarioPorItemNoOnerosa"
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle3.Format = "N2"
-        DataGridViewCellStyle3.NullValue = Nothing
-        Me.colValorVenta.DefaultCellStyle = DataGridViewCellStyle3
-        Me.colValorVenta.HeaderText = "ValorVenta"
-        Me.colValorVenta.Name = "colValorVenta"
-        Me.colValorVenta.ReadOnly = True
         '
         'btnCliente
         '

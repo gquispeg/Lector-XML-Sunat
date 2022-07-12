@@ -66,7 +66,7 @@ Public Class Factura
                 Dim fecha() As String = Doc.SelectSingleNode("/tns:Invoice/cbc:IssueDate", NsMgr).InnerText.Split("-")
                 Dim hora() As String = Doc.SelectSingleNode("/tns:Invoice/cbc:IssueTime", NsMgr).InnerText.Split(":")
 
-                Return New DateTime(fecha(0), fecha(1), fecha(2), hora(0), hora(1), hora(2))
+                Return New DateTime(fecha(0), fecha(1), fecha(2), hora(0), hora(1), hora(2).Split(".")(0))
             End Get
         End Property
         ''' <summary>
@@ -197,22 +197,38 @@ Public Class Factura
         End Property
         ReadOnly Property Ubigeo As String
             Get
-                Return Doc.SelectSingleNode("/tns:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cac:RegistrationAddress/cbc:ID", NsMgr).InnerText
+                Try
+                    Return Doc.SelectSingleNode("/tns:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cac:RegistrationAddress/cbc:ID", NsMgr).InnerText
+                Catch ex As Exception
+                    Return ""
+                End Try
             End Get
         End Property
         ReadOnly Property Ciudad As String
             Get
-                Return Doc.SelectSingleNode("/tns:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cac:RegistrationAddress/cbc:CityName", NsMgr).InnerText
+                Try
+                    Return Doc.SelectSingleNode("/tns:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cac:RegistrationAddress/cbc:CityName", NsMgr).InnerText
+                Catch ex As Exception
+                    Return ""
+                End Try
             End Get
         End Property
         ReadOnly Property CountrySubentity As String
             Get
-                Return Doc.SelectSingleNode("/tns:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cac:RegistrationAddress/cbc:CountrySubentity", NsMgr).InnerText
+                Try
+                    Return Doc.SelectSingleNode("/tns:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cac:RegistrationAddress/cbc:CountrySubentity", NsMgr).InnerText
+                Catch ex As Exception
+                    Return ""
+                End Try
             End Get
         End Property
         ReadOnly Property Distrito As String
             Get
-                Return Doc.SelectSingleNode("/tns:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cac:RegistrationAddress/cbc:District", NsMgr).InnerText
+                Try
+                    Return Doc.SelectSingleNode("/tns:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cac:RegistrationAddress/cbc:District", NsMgr).InnerText
+                Catch ex As Exception
+                    Return ""
+                End Try
             End Get
         End Property
         ReadOnly Property Direccion As String
@@ -222,7 +238,11 @@ Public Class Factura
         End Property
         ReadOnly Property Pais As String
             Get
-                Return Doc.SelectSingleNode("/tns:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cac:RegistrationAddress/cac:Country/cbc:IdentificationCode", NsMgr).InnerText
+                Try
+                    Return Doc.SelectSingleNode("/tns:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cac:RegistrationAddress/cac:Country/cbc:IdentificationCode", NsMgr).InnerText
+                Catch ex As Exception
+                    Return ""
+                End Try
             End Get
         End Property
     End Class
@@ -234,7 +254,11 @@ Public Class Factura
         End Property
         ReadOnly Property Porcentaje As String
             Get
-                Return Doc.SelectSingleNode("/tns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cbc:Percent", NsMgr).InnerText
+                Try
+                    Return Doc.SelectSingleNode("/tns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cbc:Percent", NsMgr).InnerText & "%"
+                Catch ex As Exception
+                    Return "S/D"
+                End Try
             End Get
         End Property
         ReadOnly Property MontoIgv As String
