@@ -22,9 +22,9 @@ Partial Class Form1
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TxtArchivoXml = New System.Windows.Forms.TextBox()
@@ -41,7 +41,6 @@ Partial Class Form1
         Me.BtnXml = New System.Windows.Forms.Button()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
-        Me.TabPage2 = New System.Windows.Forms.TabPage()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
         Me.lblRazonSocial = New System.Windows.Forms.Label()
         Me.TxtCliente = New System.Windows.Forms.TextBox()
@@ -63,9 +62,16 @@ Partial Class Form1
         Me.btnCliente = New System.Windows.Forms.Button()
         Me.BtnArchivoXml = New System.Windows.Forms.Button()
         Me.btnEmisor = New System.Windows.Forms.Button()
+        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.colFormaPagoId = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colFormaPagoNombre = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colFormaPagoMonto = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colFormaPagoFecha = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.DgvItems, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
+        Me.TabPage3.SuspendLayout()
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label1
@@ -152,10 +158,10 @@ Partial Class Form1
         'colUnitario
         '
         Me.colUnitario.DataPropertyName = "ValorUnitario"
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle1.Format = "N2"
-        DataGridViewCellStyle1.NullValue = Nothing
-        Me.colUnitario.DefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle4.Format = "N2"
+        DataGridViewCellStyle4.NullValue = Nothing
+        Me.colUnitario.DefaultCellStyle = DataGridViewCellStyle4
         Me.colUnitario.HeaderText = "Unitario"
         Me.colUnitario.Name = "colUnitario"
         Me.colUnitario.ReadOnly = True
@@ -163,10 +169,10 @@ Partial Class Form1
         'colPrecioUnitario
         '
         Me.colPrecioUnitario.DataPropertyName = "ValorVentaPorItem"
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle2.Format = "N2"
-        DataGridViewCellStyle2.NullValue = Nothing
-        Me.colPrecioUnitario.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle5.Format = "N2"
+        DataGridViewCellStyle5.NullValue = Nothing
+        Me.colPrecioUnitario.DefaultCellStyle = DataGridViewCellStyle5
         Me.colPrecioUnitario.HeaderText = "P.unitario"
         Me.colPrecioUnitario.Name = "colPrecioUnitario"
         Me.colPrecioUnitario.ReadOnly = True
@@ -174,10 +180,10 @@ Partial Class Form1
         'colValorVenta
         '
         Me.colValorVenta.DataPropertyName = "ValorReferencialUnitarioPorItemNoOnerosa"
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle3.Format = "N2"
-        DataGridViewCellStyle3.NullValue = Nothing
-        Me.colValorVenta.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle6.Format = "N2"
+        DataGridViewCellStyle6.NullValue = Nothing
+        Me.colValorVenta.DefaultCellStyle = DataGridViewCellStyle6
         Me.colValorVenta.HeaderText = "ValorVenta"
         Me.colValorVenta.Name = "colValorVenta"
         Me.colValorVenta.ReadOnly = True
@@ -194,7 +200,6 @@ Partial Class Form1
         'TabControl1
         '
         Me.TabControl1.Controls.Add(Me.TabPage1)
-        Me.TabControl1.Controls.Add(Me.TabPage2)
         Me.TabControl1.Controls.Add(Me.TabPage3)
         Me.TabControl1.Location = New System.Drawing.Point(3, 126)
         Me.TabControl1.Name = "TabControl1"
@@ -213,18 +218,9 @@ Partial Class Form1
         Me.TabPage1.Text = "Items"
         Me.TabPage1.UseVisualStyleBackColor = True
         '
-        'TabPage2
-        '
-        Me.TabPage2.Location = New System.Drawing.Point(4, 22)
-        Me.TabPage2.Name = "TabPage2"
-        Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(583, 260)
-        Me.TabPage2.TabIndex = 1
-        Me.TabPage2.Text = "Tributos"
-        Me.TabPage2.UseVisualStyleBackColor = True
-        '
         'TabPage3
         '
+        Me.TabPage3.Controls.Add(Me.DataGridView1)
         Me.TabPage3.Location = New System.Drawing.Point(4, 22)
         Me.TabPage3.Name = "TabPage3"
         Me.TabPage3.Padding = New System.Windows.Forms.Padding(3)
@@ -409,6 +405,48 @@ Partial Class Form1
         Me.btnEmisor.TabIndex = 23
         Me.btnEmisor.UseVisualStyleBackColor = True
         '
+        'DataGridView1
+        '
+        Me.DataGridView1.AllowUserToAddRows = False
+        Me.DataGridView1.AllowUserToDeleteRows = False
+        Me.DataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.colFormaPagoId, Me.colFormaPagoNombre, Me.colFormaPagoMonto, Me.colFormaPagoFecha})
+        Me.DataGridView1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.DataGridView1.Location = New System.Drawing.Point(3, 3)
+        Me.DataGridView1.Name = "DataGridView1"
+        Me.DataGridView1.ReadOnly = True
+        Me.DataGridView1.Size = New System.Drawing.Size(577, 254)
+        Me.DataGridView1.TabIndex = 0
+        '
+        'colFormaPagoId
+        '
+        Me.colFormaPagoId.DataPropertyName = "Id"
+        Me.colFormaPagoId.HeaderText = "ID"
+        Me.colFormaPagoId.Name = "colFormaPagoId"
+        Me.colFormaPagoId.ReadOnly = True
+        '
+        'colFormaPagoNombre
+        '
+        Me.colFormaPagoNombre.DataPropertyName = "Nombre"
+        Me.colFormaPagoNombre.HeaderText = "Nombre"
+        Me.colFormaPagoNombre.Name = "colFormaPagoNombre"
+        Me.colFormaPagoNombre.ReadOnly = True
+        '
+        'colFormaPagoMonto
+        '
+        Me.colFormaPagoMonto.DataPropertyName = "Monto"
+        Me.colFormaPagoMonto.HeaderText = "Monto"
+        Me.colFormaPagoMonto.Name = "colFormaPagoMonto"
+        Me.colFormaPagoMonto.ReadOnly = True
+        '
+        'colFormaPagoFecha
+        '
+        Me.colFormaPagoFecha.DataPropertyName = "Fecha"
+        Me.colFormaPagoFecha.HeaderText = "Fecha"
+        Me.colFormaPagoFecha.Name = "colFormaPagoFecha"
+        Me.colFormaPagoFecha.ReadOnly = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -448,6 +486,8 @@ Partial Class Form1
         CType(Me.DgvItems, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabControl1.ResumeLayout(False)
         Me.TabPage1.ResumeLayout(False)
+        Me.TabPage3.ResumeLayout(False)
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -461,7 +501,6 @@ Partial Class Form1
     Friend WithEvents BtnXml As Button
     Friend WithEvents TabControl1 As TabControl
     Friend WithEvents TabPage1 As TabPage
-    Friend WithEvents TabPage2 As TabPage
     Friend WithEvents lblRazonSocial As Label
     Friend WithEvents TxtCliente As TextBox
     Friend WithEvents btnEmisor As Button
@@ -490,4 +529,9 @@ Partial Class Form1
     Friend WithEvents colUnitario As DataGridViewTextBoxColumn
     Friend WithEvents colPrecioUnitario As DataGridViewTextBoxColumn
     Friend WithEvents colValorVenta As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridView1 As DataGridView
+    Friend WithEvents colFormaPagoId As DataGridViewTextBoxColumn
+    Friend WithEvents colFormaPagoNombre As DataGridViewTextBoxColumn
+    Friend WithEvents colFormaPagoMonto As DataGridViewTextBoxColumn
+    Friend WithEvents colFormaPagoFecha As DataGridViewTextBoxColumn
 End Class

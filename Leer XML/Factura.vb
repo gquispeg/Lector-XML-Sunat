@@ -1,4 +1,5 @@
-﻿Imports System.Xml
+﻿
+Imports System.Xml
 
 Public Class Factura
     Private Shared Doc As XmlDocument
@@ -13,12 +14,23 @@ Public Class Factura
             Throw New Exception("El código de documento del XML no corresponde a una factura")
         End If
 
-        Dim TagUserName As String() = {"cac:InvoiceLine"}
+        Dim TagUserName As String()
+        'Items de la factura
+        TagUserName = {"cac:InvoiceLine"}
         _Items = New List(Of FacturaItem)
         For Each tagName As String In TagUserName
             Dim UserNameNode As XmlNodeList = Doc.GetElementsByTagName(tagName)
             For i As Integer = 0 To UserNameNode.Count - 1
                 _Items.Add(New FacturaItem(Doc, i))
+            Next
+        Next
+        'condiciones de pago
+        TagUserName = {"cac:PaymentTerms"}
+        _CondicionPago = New List(Of FacturaCondicionPagoItem)
+        For Each tagName As String In TagUserName
+            Dim UserNameNode As XmlNodeList = Doc.GetElementsByTagName(tagName)
+            For i As Integer = 0 To UserNameNode.Count - 1
+                _CondicionPago.Add(New FacturaCondicionPagoItem(Doc, i))
             Next
         Next
     End Sub
@@ -35,6 +47,13 @@ Public Class Factura
             Return _Items
         End Get
     End Property
+    Private _CondicionPago As List(Of FacturacondicionPagoItem)
+    ReadOnly Property CondicionPago As List(Of FacturaCondicionPagoItem)
+        Get
+            Return _CondicionPago
+        End Get
+    End Property
+
 
     ReadOnly Property EsCorrecto As Boolean
         Get
@@ -372,6 +391,63 @@ Public Class Factura
         ReadOnly Property IgvTipoAfectacion As String
             Get
                 Return Doc.SelectNodes("/tns:Invoice/cac:InvoiceLine/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cbc:TaxExemptionReasonCode", NsMgr)(IFila).InnerText
+            End Get
+        End Property
+    End Class
+    Class FacturaCondicionPagoItem
+        Private XmlItem As XmlDocument
+        Private IFila As Integer
+        Sub New(ByVal xxml As XmlDocument, ByVal orden As Integer)
+            XmlItem = xxml
+            IFila = orden
+        End Sub
+
+        ReadOnly Property Id As String
+            Get
+                Return XmlItem.SelectNodes("/tns:Invoice/cac:PaymentTerms/cbc:ID", NsMgr)(IFila).InnerText
+                'If IFila = 0 Then
+                '    Return XmlItem.SelectNodes("/tns:Invoice/cac:PaymentTerms/cbc:ID", NsMgr)(IFila).InnerText
+                'Else
+                '    Return XmlItem.SelectSingleNode("/tns:Invoice/cac:PaymentTerms[" & IFila + 1 & "]/cbc:ID", NsMgr).InnerText
+                'End If
+            End Get
+        End Property
+        ReadOnly Property Nombre As String
+            Get
+                Return XmlItem.SelectNodes("/tns:Invoice/cac:PaymentTerms/cbc:PaymentMeansID", NsMgr)(IFila).InnerText
+                'If IFila = 0 Then
+                '    Return XmlItem.SelectNodes("/tns:Invoice/cac:PaymentTerms/cbc:PaymentMeansID", NsMgr)(IFila).InnerText
+                'Else
+                '    Return XmlItem.SelectSingleNode("/tns:Invoice/cac:PaymentTerms[" & IFila + 1 & "]/cbc:PaymentMeansID", NsMgr).InnerText
+                'End If
+            End Get
+        End Property
+        ReadOnly Property Monto As String
+            Get
+                Return XmlItem.SelectNodes("/tns:Invoice/cac:PaymentTerms/cbc:Amount", NsMgr)(IFila).InnerText
+                'If IFila = 0 Then
+                '    Return XmlItem.SelectNodes("/tns:Invoice/cac:PaymentTerms/cbc:Amount", NsMgr)(IFila).InnerText
+                'Else
+                '    Return XmlItem.SelectSingleNode("/tns:Invoice/cac:PaymentTerms[" & IFila + 1 & "]/cbc:Amount", NsMgr).InnerText
+                'End If
+            End Get
+        End Property
+        ReadOnly Property Fecha As String
+            Get
+                Try
+                    Return XmlItem.SelectNodes("/tns:Invoice/cac:PaymentTerms/cbc:PaymentDueDate", NsMgr)(IFila).InnerText
+                Catch ex As Exception
+                    Return ""
+                End Try
+                'Try
+                '    If IFila = 0 Then
+                '        Return XmlItem.SelectNodes("/tns:Invoice/cac:PaymentTerms/cbc:PaymentDueDate", NsMgr)(IFila).InnerText
+                '    Else
+                '        Return XmlItem.SelectSingleNode("/tns:Invoice/cac:PaymentTerms[" & IFila + 1 & "]/cbc:PaymentDueDate", NsMgr).InnerText
+                '    End If
+                'Catch ex As Exception
+                '    Return ""
+                'End Try
             End Get
         End Property
     End Class

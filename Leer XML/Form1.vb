@@ -95,6 +95,8 @@ Public Class Form1
 
         DgvItems.AutoGenerateColumns = False
         DgvItems.DataSource = Comprobante.Items
+        DataGridView1.AutoGenerateColumns = False
+        DataGridView1.DataSource = Comprobante.CondicionPago
     End Sub
 End Class
 
