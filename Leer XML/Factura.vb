@@ -252,7 +252,11 @@ Public Class Factura
         End Property
         ReadOnly Property Direccion As String
             Get
-                Return Doc.SelectSingleNode("/tns:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cac:RegistrationAddress/cac:AddressLine/cbc:Line", NsMgr).InnerText
+                Try
+                    Return Doc.SelectSingleNode("/tns:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cac:RegistrationAddress/cac:AddressLine/cbc:Line", NsMgr).InnerText
+                Catch ex As Exception
+                    Return ""
+                End Try
             End Get
         End Property
         ReadOnly Property Pais As String
@@ -326,7 +330,10 @@ Public Class Factura
         End Property
         ReadOnly Property CodigoProducto As String
             Get
-                Return XmlItem.SelectNodes("/tns:Invoice/cac:InvoiceLine/cac:Item/cac:SellersItemIdentification/cbc:ID", NsMgr)(IFila).InnerText
+                Try
+                    Return XmlItem.SelectNodes("/tns:Invoice/cac:InvoiceLine/cac:Item/cac:SellersItemIdentification/cbc:ID", NsMgr)(IFila).InnerText
+                Catch ex As Exception
+                End Try
             End Get
         End Property
         ReadOnly Property Descripcion As String
@@ -424,7 +431,11 @@ Public Class Factura
         End Property
         ReadOnly Property Monto As String
             Get
-                Return XmlItem.SelectNodes("/tns:Invoice/cac:PaymentTerms/cbc:Amount", NsMgr)(IFila).InnerText
+                Try
+                    Return XmlItem.SelectNodes("/tns:Invoice/cac:PaymentTerms/cbc:Amount", NsMgr)(IFila).InnerText
+                Catch ex As Exception
+                    Return XmlItem.SelectNodes("/tns:Invoice/cac:PaymentTerms/cbc:PaymentMeansID", NsMgr)(IFila).InnerText
+                End Try
                 'If IFila = 0 Then
                 '    Return XmlItem.SelectNodes("/tns:Invoice/cac:PaymentTerms/cbc:Amount", NsMgr)(IFila).InnerText
                 'Else
