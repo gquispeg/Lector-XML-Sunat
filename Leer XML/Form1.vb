@@ -77,13 +77,14 @@ Public Class Form1
     End Sub
 
     Private Sub MostrarData()
+        Dim catalogo As New catalogo
 
         TxtEmisor.Text = Comprobante.Emisor.Ruc & " - " & Comprobante.Emisor.RazonSocial
         TxtCliente.Text = Comprobante.Cliente.Ruc & " - " & Comprobante.Cliente.RazonSocial
 
         TxtDocumentoTipo.Text = Comprobante.Documento.TipoDocumentoNombre
         TxtDocumentoNumero.Text = Comprobante.Documento.Numero
-        TxtTipoOperacion.Text = Comprobante.Documento.TipoOperacionCodigo
+        TxtTipoOperacion.Text = catalogo.Obtener(51, Comprobante.Documento.TipoOperacionCodigo)
         TxtEmision.Text = Comprobante.Documento.FechaEmision.ToShortDateString
 
         TxtSubTotal.Text = Comprobante.IGV.MontoBase
