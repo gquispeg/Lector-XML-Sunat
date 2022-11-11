@@ -22,9 +22,9 @@ Partial Class Form1
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TxtArchivoXml = New System.Windows.Forms.TextBox()
@@ -158,10 +158,10 @@ Partial Class Form1
         'colUnitario
         '
         Me.colUnitario.DataPropertyName = "ValorUnitario"
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle4.Format = "N2"
-        DataGridViewCellStyle4.NullValue = Nothing
-        Me.colUnitario.DefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle7.Format = "N2"
+        DataGridViewCellStyle7.NullValue = Nothing
+        Me.colUnitario.DefaultCellStyle = DataGridViewCellStyle7
         Me.colUnitario.HeaderText = "Unitario"
         Me.colUnitario.Name = "colUnitario"
         Me.colUnitario.ReadOnly = True
@@ -169,10 +169,10 @@ Partial Class Form1
         'colPrecioUnitario
         '
         Me.colPrecioUnitario.DataPropertyName = "ValorVentaPorItem"
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle5.Format = "N2"
-        DataGridViewCellStyle5.NullValue = Nothing
-        Me.colPrecioUnitario.DefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle8.Format = "N2"
+        DataGridViewCellStyle8.NullValue = Nothing
+        Me.colPrecioUnitario.DefaultCellStyle = DataGridViewCellStyle8
         Me.colPrecioUnitario.HeaderText = "P.unitario"
         Me.colPrecioUnitario.Name = "colPrecioUnitario"
         Me.colPrecioUnitario.ReadOnly = True
@@ -180,10 +180,10 @@ Partial Class Form1
         'colValorVenta
         '
         Me.colValorVenta.DataPropertyName = "ValorReferencialUnitarioPorItemNoOnerosa"
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle6.Format = "N2"
-        DataGridViewCellStyle6.NullValue = Nothing
-        Me.colValorVenta.DefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle9.Format = "N2"
+        DataGridViewCellStyle9.NullValue = Nothing
+        Me.colValorVenta.DefaultCellStyle = DataGridViewCellStyle9
         Me.colValorVenta.HeaderText = "ValorVenta"
         Me.colValorVenta.Name = "colValorVenta"
         Me.colValorVenta.ReadOnly = True
@@ -226,7 +226,7 @@ Partial Class Form1
         Me.TabPage3.Padding = New System.Windows.Forms.Padding(3)
         Me.TabPage3.Size = New System.Drawing.Size(583, 260)
         Me.TabPage3.TabIndex = 2
-        Me.TabPage3.Text = "Cuotas"
+        Me.TabPage3.Text = "Condición de pago"
         Me.TabPage3.UseVisualStyleBackColor = True
         '
         'lblRazonSocial
