@@ -77,22 +77,22 @@ Public Class Form1
     End Sub
 
     Private Sub MostrarData()
-        Dim catalogo As New catalogo
-
         TxtEmisor.Text = Comprobante.Emisor.Ruc & " - " & Comprobante.Emisor.RazonSocial
         TxtCliente.Text = Comprobante.Cliente.Ruc & " - " & Comprobante.Cliente.RazonSocial
 
         TxtDocumentoTipo.Text = Comprobante.Documento.TipoDocumentoNombre
         TxtDocumentoNumero.Text = Comprobante.Documento.Numero
-        TxtTipoOperacion.Text = catalogo.Obtener(51, Comprobante.Documento.TipoOperacionCodigo)
+        TxtTipoOperacion.Text = Comprobante.Documento.TipoOperacionNombre
         TxtEmision.Text = Comprobante.Documento.FechaEmision.ToShortDateString
 
-        TxtSubTotal.Text = Comprobante.IGV.MontoBase
+        TxtSubTotal.Text = Comprobante.Sumas.IgvBase
+        TxtGratuita.Text = Comprobante.Sumas.GratuitoBase 
+        TxtGravada.Text = Comprobante.Sumas.IgvBase
         LblIgvPorcentaje.Text = Comprobante.IGV.Porcentaje
-        TxtIgvMonto.Text = Comprobante.Documento.SumaIgv
-        TxtTotalFactura.Text = Comprobante.Documento.TotalFactura
+        TxtIgvMonto.Text = Comprobante.Sumas.IgvMonto
+        TxtTotalFactura.Text = Comprobante.Sumas.TotalFactura
 
-        LblPrecio.Text = Comprobante.Documento.TotalFacturaEnLetra
+        LblPrecio.Text = Comprobante.Sumas.TotalFacturaEnLetra
 
         DgvItems.AutoGenerateColumns = False
         DgvItems.DataSource = Comprobante.Items

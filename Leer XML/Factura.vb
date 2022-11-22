@@ -4,10 +4,11 @@ Imports System.Xml
 Public Class Factura
     Private Shared Doc As XmlDocument
     Private Shared NsMgr As XmlNamespaceManager
-
+    Private Shared catalogo As New catalogo
     Sub New(ByVal documentoXml As XmlDocument, ByVal documentoNameSpaceManager As XmlNamespaceManager)
-        doc = documentoXml
-        nsMgr = documentoNameSpaceManager
+        catalogo = New catalogo
+        Doc = documentoXml
+        NsMgr = documentoNameSpaceManager
 
         Dim tipo As String = Doc.SelectSingleNode("/tns:Invoice/cbc:InvoiceTypeCode", NsMgr).InnerText
         If tipo <> "01" Then
@@ -24,6 +25,13 @@ Public Class Factura
                 _Items.Add(New FacturaItem(Doc, i))
             Next
         Next
+        'Tributos general
+        '/Invoice/cac:TaxTotal/cac:TaxSubtotal
+        '/Invoice/cac:PaymentTerms
+        'Dim taxSubTotal = Doc.SelectSingleNode("cac:TaxTotal", NsMgr).SelectNodes("")
+
+
+
         'condiciones de pago
         TagUserName = {"cac:PaymentTerms"}
         _CondicionPago = New List(Of FacturaCondicionPagoItem)
@@ -33,10 +41,13 @@ Public Class Factura
                 _CondicionPago.Add(New FacturaCondicionPagoItem(Doc, i))
             Next
         Next
+
+        Sumas = New FacturaSumas
     End Sub
 
     ReadOnly Property Estructura As New FacturaEstructura
     ReadOnly Property Documento As New FacturaDocumento
+    ReadOnly Property Sumas As FacturaSumas
     ReadOnly Property FirmaDigital As New FacturaFirmaDigital
     ReadOnly Property Emisor As New FacturaEmisor
     ReadOnly Property Cliente As New FacturaCliente
@@ -74,6 +85,160 @@ Public Class Factura
             End Get
         End Property
     End Class
+    Class FacturaSumas
+        Sub New()
+            Dim TagUserName As String() = {"cac:TaxTotal"}
+            For Each tagName As String In TagUserName
+                Dim UserNameNode As XmlNodeList = Doc.GetElementsByTagName(tagName)
+                Dim codigo As String = "xxxx"
+                For i As Integer = 0 To UserNameNode.Count - 1
+                    Dim XmlItem As XmlDocument = Doc
+                    Dim base, monto As Double
+                    Try
+                        codigo = XmlItem.SelectNodes("/tns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cac:TaxScheme/cbc:ID", NsMgr)(i).InnerText
+                        base = XmlItem.SelectNodes("/tns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cbc:TaxableAmount", NsMgr)(i).InnerText
+                        monto = XmlItem.SelectNodes("/tns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cbc:TaxAmount", NsMgr)(i).InnerText
+                    Catch ex As Exception
+                    End Try
+                    Select Case codigo
+                        Case "1000"
+                            _1000Base = base
+                            _1000Monto = monto
+                        Case "1016"
+                            _1016Base = base
+                            _1016Monto = monto
+                        Case "2000"
+                            _2000Base = base
+                            _2000Monto = monto
+                        Case "7152"
+                            _7152Base = base
+                            _7152Monto = monto
+                        Case "9996"
+                            _9996Base = base
+                            _9996Monto = monto
+                        Case "9997"
+                            _9997Base = base
+                            _9997Monto = monto
+                        Case "9998"
+                            _9998Base = base
+                            _9998Monto = monto
+                        Case "9999"
+                            _9999Base = base
+                            _9999Monto = monto
+                    End Select
+                Next
+            Next
+        End Sub
+
+        Private _1000Base As Double = 0
+        Private _1000Monto As Double = 0
+        Private _1016Base As Double = 0
+        Private _1016Monto As Double = 0
+        Private _2000Base As Double = 0
+        Private _2000Monto As Double = 0
+        Private _7152Base As Double = 0
+        Private _7152Monto As Double = 0
+        Private _9996Base As Double = 0
+        Private _9996Monto As Double = 0
+        Private _9997Base As Double = 0
+        Private _9997Monto As Double = 0
+        Private _9998Base As Double = 0
+        Private _9998Monto As Double = 0
+        Private _9999Base As Double = 0
+        Private _9999Monto As Double = 0
+
+        ReadOnly Property IgvBase As Double
+            Get
+                Return _1000Base
+            End Get
+        End Property
+        ReadOnly Property IgvMonto As Double
+            Get
+                Return _1000Monto
+            End Get
+        End Property
+        ReadOnly Property ImpuestoArrozBase As Double
+            Get
+                Return _1016Base
+            End Get
+        End Property
+        ReadOnly Property ImpuestoArrozMonto As Double
+            Get
+                Return _1016Monto
+            End Get
+        End Property
+        ReadOnly Property IscBase As Double
+            Get
+                Return _2000Base
+            End Get
+        End Property
+        ReadOnly Property IscMonto As Double
+            Get
+                Return _2000Monto
+            End Get
+        End Property
+        ReadOnly Property BolsaPlasticaBase As Double
+            Get
+                Return _7152Base
+            End Get
+        End Property
+        ReadOnly Property BolsaPlasticaMonto As Double
+            Get
+                Return _7152Monto
+            End Get
+        End Property
+        ReadOnly Property GratuitoBase As Double
+            Get
+                Return _9996Base
+            End Get
+        End Property
+        ReadOnly Property GratuitoMonto As Double
+            Get
+                Return _9996Monto
+            End Get
+        End Property
+        ReadOnly Property ExoneradoBase As Double
+            Get
+                Return _9997Base
+            End Get
+        End Property
+        ReadOnly Property ExoneradoMonto As Double
+            Get
+                Return _9997Monto
+            End Get
+        End Property
+        ReadOnly Property InafectoBase As Double
+            Get
+                Return _9998Base
+            End Get
+        End Property
+        ReadOnly Property InafectoMonto As Double
+            Get
+                Return _9998Monto
+            End Get
+        End Property
+        ReadOnly Property OtrosTributosBase As Double
+            Get
+                Return _9999Base
+            End Get
+        End Property
+        ReadOnly Property OtrosTributosMonto As Double
+            Get
+                Return _9999Monto
+            End Get
+        End Property
+
+        ReadOnly Property TotalFactura As Double
+            Get
+                Return Doc.SelectSingleNode("/tns:Invoice/cac:LegalMonetaryTotal/cbc:PayableAmount", NsMgr).InnerText
+            End Get
+        End Property
+        ReadOnly Property TotalFacturaEnLetra As String
+            Get
+                Return Doc.SelectSingleNode("/tns:Invoice/cbc:Note", NsMgr).InnerText
+            End Get
+        End Property
+    End Class
     Class FacturaDocumento
         ReadOnly Property Numero As String
             Get
@@ -89,12 +254,21 @@ Public Class Factura
             End Get
         End Property
         ''' <summary>
-        ''' Completar con el catalogo 01 o 51 (confirmar)
+        ''' Codigo catalogo 51
         ''' </summary>
         ''' <returns></returns>
         ReadOnly Property TipoOperacionCodigo As String
             Get
                 Return Doc.SelectSingleNode("/tns:Invoice/cbc:InvoiceTypeCode/@listID", NsMgr).InnerText
+            End Get
+        End Property
+        ''' <summary>
+        ''' Nombre catálogo 51
+        ''' </summary>
+        ''' <returns></returns>
+        ReadOnly Property TipoOperacionNombre As String
+            Get
+                Return catalogo.Obtener(51, TipoOperacionCodigo)
             End Get
         End Property
         ReadOnly Property TipoDocumentoNombre As String
@@ -115,46 +289,6 @@ Public Class Factura
         ReadOnly Property IgvPorcentaje As Double
             Get
                 Return Doc.SelectSingleNode("/tns:Invoice/cac:TaxTotal/cbc:TaxAmount", NsMgr).InnerText
-            End Get
-        End Property
-        ReadOnly Property SumaItems As Double
-            Get
-                Return Doc.SelectSingleNode("/tns:Invoice/cac:TaxTotal/cbc:TaxAmount", NsMgr).InnerText
-            End Get
-        End Property
-        ''' <summary>
-        ''' total ventas operaciones gravadas + sumatoria ISC
-        ''' </summary>
-        ''' <returns></returns>
-        ReadOnly Property SumaIgv As Double
-            Get
-                Return Doc.SelectSingleNode("/tns:Invoice/cac:TaxTotal/cbc:TaxAmount", NsMgr).InnerText
-            End Get
-        End Property
-
-        ReadOnly Property SumaIsc As Double
-            Get
-                Return 0
-            End Get
-        End Property
-        ReadOnly Property SumaOtrosTributos As Double
-            Get
-                Return 0
-            End Get
-        End Property
-        ReadOnly Property SumaOtrosCargos As Double
-            Get
-                Return 0
-            End Get
-        End Property
-        ReadOnly Property TotalFactura As Double
-            Get
-                Return Doc.SelectSingleNode("/tns:Invoice/cac:LegalMonetaryTotal/cbc:PayableAmount", NsMgr).InnerText
-            End Get
-        End Property
-        ReadOnly Property TotalFacturaEnLetra As String
-            Get
-                Return Doc.SelectSingleNode("/tns:Invoice/cbc:Note", NsMgr).InnerText
             End Get
         End Property
     End Class
@@ -270,6 +404,10 @@ Public Class Factura
         End Property
     End Class
     Class FacturaIgv
+        Sub New()
+
+        End Sub
+
         ReadOnly Property MontoBase As String
             Get
                 Return Doc.SelectSingleNode("/tns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cbc:TaxableAmount", NsMgr).InnerText
