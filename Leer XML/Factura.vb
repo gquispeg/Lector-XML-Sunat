@@ -6,6 +6,7 @@ Public Class Factura
     Private Shared NsMgr As XmlNamespaceManager
     Private Shared catalogo As New catalogo
     Sub New(ByVal documentoXml As XmlDocument, ByVal documentoNameSpaceManager As XmlNamespaceManager)
+        _Impuestos = New List(Of FacturaImpuestoItem)
         catalogo = New catalogo
         Doc = documentoXml
         NsMgr = documentoNameSpaceManager
@@ -52,12 +53,14 @@ Public Class Factura
     ReadOnly Property Emisor As New FacturaEmisor
     ReadOnly Property Cliente As New FacturaCliente
     ReadOnly Property IGV As New FacturaIgv
+
     Private _Items As List(Of FacturaItem)
     ReadOnly Property Items As List(Of FacturaItem)
         Get
             Return _Items
         End Get
     End Property
+
     Private _CondicionPago As List(Of FacturacondicionPagoItem)
     ReadOnly Property CondicionPago As List(Of FacturaCondicionPagoItem)
         Get
@@ -65,6 +68,12 @@ Public Class Factura
         End Get
     End Property
 
+    Private Shared _Impuestos As List(Of FacturaImpuestoItem)
+    ReadOnly Property Impuestos As List(Of FacturaImpuestoItem)
+        Get
+            Return _Impuestos
+        End Get
+    End Property
 
     ReadOnly Property EsCorrecto As Boolean
         Get
@@ -87,6 +96,7 @@ Public Class Factura
     End Class
     Class FacturaSumas
         Sub New()
+
             Dim TagUserName As String() = {"cac:TaxTotal"}
             For Each tagName As String In TagUserName
                 Dim UserNameNode As XmlNodeList = Doc.GetElementsByTagName(tagName)
@@ -94,6 +104,7 @@ Public Class Factura
                 For i As Integer = 0 To UserNameNode.Count - 1
                     Dim XmlItem As XmlDocument = Doc
                     Dim base, monto As Double
+                    codigo = "xxxxx"
                     Try
                         codigo = XmlItem.SelectNodes("/tns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cac:TaxScheme/cbc:ID", NsMgr)(i).InnerText
                         base = XmlItem.SelectNodes("/tns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cbc:TaxableAmount", NsMgr)(i).InnerText
@@ -104,15 +115,19 @@ Public Class Factura
                         Case "1000"
                             _1000Base = base
                             _1000Monto = monto
+                            _Impuestos.Add(New FacturaImpuestoItem("IGV Impuesto General a las Ventas", base, monto))
                         Case "1016"
                             _1016Base = base
                             _1016Monto = monto
+                            _Impuestos.Add(New FacturaImpuestoItem(" a la Venta Arroz Pilado", base, monto))
                         Case "2000"
                             _2000Base = base
                             _2000Monto = monto
+                            _Impuestos.Add(New FacturaImpuestoItem("ISC Impuesto Selectivo al Consumo", base, monto))
                         Case "7152"
                             _7152Base = base
                             _7152Monto = monto
+                            _Impuestos.Add(New FacturaImpuestoItem("Impuesto a la bolsa plastica", base, monto))
                         Case "9996"
                             _9996Base = base
                             _9996Monto = monto
@@ -125,6 +140,7 @@ Public Class Factura
                         Case "9999"
                             _9999Base = base
                             _9999Monto = monto
+                            _Impuestos.Add(New FacturaImpuestoItem("Otros tributos", base, monto))
                     End Select
                 Next
             Next
@@ -599,5 +615,16 @@ Public Class Factura
                 'End Try
             End Get
         End Property
+    End Class
+    Class FacturaImpuestoItem
+        Sub New(ByVal nomImpuesto As String, ByVal monBase As Double, ByVal impuesto As Double)
+            Nombre = nomImpuesto
+            Base = monBase
+            Monto = impuesto
+        End Sub
+
+        Property Nombre As String
+        Property Base As Double
+        Property Monto As Double
     End Class
 End Class

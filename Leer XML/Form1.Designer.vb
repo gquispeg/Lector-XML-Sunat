@@ -26,6 +26,8 @@ Partial Class Form1
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TxtArchivoXml = New System.Windows.Forms.TextBox()
         Me.TxtEmisor = New System.Windows.Forms.TextBox()
@@ -71,11 +73,18 @@ Partial Class Form1
         Me.Label8 = New System.Windows.Forms.Label()
         Me.TxtGratuita = New System.Windows.Forms.TextBox()
         Me.Label10 = New System.Windows.Forms.Label()
+        Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.DgvTributos = New System.Windows.Forms.DataGridView()
+        Me.colNombre = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colBase = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colMonto = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.DgvItems, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.TabPage3.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.TabPage2.SuspendLayout()
+        CType(Me.DgvTributos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label1
@@ -205,6 +214,7 @@ Partial Class Form1
         '
         Me.TabControl1.Controls.Add(Me.TabPage1)
         Me.TabControl1.Controls.Add(Me.TabPage3)
+        Me.TabControl1.Controls.Add(Me.TabPage2)
         Me.TabControl1.Location = New System.Drawing.Point(3, 126)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
@@ -487,6 +497,59 @@ Partial Class Form1
         Me.Label10.TabIndex = 44
         Me.Label10.Text = "Total Op. gratuitas"
         '
+        'TabPage2
+        '
+        Me.TabPage2.Controls.Add(Me.DgvTributos)
+        Me.TabPage2.Location = New System.Drawing.Point(4, 22)
+        Me.TabPage2.Name = "TabPage2"
+        Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage2.Size = New System.Drawing.Size(583, 260)
+        Me.TabPage2.TabIndex = 3
+        Me.TabPage2.Text = "Tributos"
+        Me.TabPage2.UseVisualStyleBackColor = True
+        '
+        'DgvTributos
+        '
+        Me.DgvTributos.AllowUserToAddRows = False
+        Me.DgvTributos.AllowUserToDeleteRows = False
+        Me.DgvTributos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.DgvTributos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DgvTributos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.colNombre, Me.colBase, Me.colMonto})
+        Me.DgvTributos.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.DgvTributos.Location = New System.Drawing.Point(3, 3)
+        Me.DgvTributos.Name = "DgvTributos"
+        Me.DgvTributos.ReadOnly = True
+        Me.DgvTributos.Size = New System.Drawing.Size(577, 254)
+        Me.DgvTributos.TabIndex = 0
+        '
+        'colNombre
+        '
+        Me.colNombre.DataPropertyName = "nombre"
+        Me.colNombre.FillWeight = 250.0!
+        Me.colNombre.HeaderText = "Nombre"
+        Me.colNombre.Name = "colNombre"
+        Me.colNombre.ReadOnly = True
+        '
+        'colBase
+        '
+        Me.colBase.DataPropertyName = "base"
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle4.Format = "n2"
+        Me.colBase.DefaultCellStyle = DataGridViewCellStyle4
+        Me.colBase.HeaderText = "Base"
+        Me.colBase.Name = "colBase"
+        Me.colBase.ReadOnly = True
+        '
+        'colMonto
+        '
+        Me.colMonto.DataPropertyName = "monto"
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle5.Format = "n2"
+        Me.colMonto.DefaultCellStyle = DataGridViewCellStyle5
+        Me.colMonto.HeaderText = "Monto"
+        Me.colMonto.Name = "colMonto"
+        Me.colMonto.ReadOnly = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -532,6 +595,8 @@ Partial Class Form1
         Me.TabPage1.ResumeLayout(False)
         Me.TabPage3.ResumeLayout(False)
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.TabPage2.ResumeLayout(False)
+        CType(Me.DgvTributos, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -582,4 +647,9 @@ Partial Class Form1
     Friend WithEvents Label8 As Label
     Friend WithEvents TxtGratuita As TextBox
     Friend WithEvents Label10 As Label
+    Friend WithEvents TabPage2 As TabPage
+    Friend WithEvents DgvTributos As DataGridView
+    Friend WithEvents colNombre As DataGridViewTextBoxColumn
+    Friend WithEvents colBase As DataGridViewTextBoxColumn
+    Friend WithEvents colMonto As DataGridViewTextBoxColumn
 End Class
