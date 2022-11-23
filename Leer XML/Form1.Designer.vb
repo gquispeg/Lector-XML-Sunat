@@ -85,6 +85,10 @@ Partial Class Form1
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TabPage5 = New System.Windows.Forms.TabPage()
+        Me.dgvNotas = New System.Windows.Forms.DataGridView()
+        Me.colId = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colNota = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.DgvItems, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
@@ -94,6 +98,8 @@ Partial Class Form1
         CType(Me.DgvTributos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPage4.SuspendLayout()
         CType(Me.DgvSumas, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.TabPage5.SuspendLayout()
+        CType(Me.dgvNotas, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label1
@@ -225,6 +231,7 @@ Partial Class Form1
         Me.TabControl1.Controls.Add(Me.TabPage3)
         Me.TabControl1.Controls.Add(Me.TabPage2)
         Me.TabControl1.Controls.Add(Me.TabPage4)
+        Me.TabControl1.Controls.Add(Me.TabPage5)
         Me.TabControl1.Location = New System.Drawing.Point(3, 126)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
@@ -613,6 +620,47 @@ Partial Class Form1
         Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
         Me.DataGridViewTextBoxColumn3.ReadOnly = True
         '
+        'TabPage5
+        '
+        Me.TabPage5.Controls.Add(Me.dgvNotas)
+        Me.TabPage5.Location = New System.Drawing.Point(4, 22)
+        Me.TabPage5.Name = "TabPage5"
+        Me.TabPage5.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage5.Size = New System.Drawing.Size(583, 260)
+        Me.TabPage5.TabIndex = 5
+        Me.TabPage5.Text = "Notas"
+        Me.TabPage5.UseVisualStyleBackColor = True
+        '
+        'dgvNotas
+        '
+        Me.dgvNotas.AllowUserToAddRows = False
+        Me.dgvNotas.AllowUserToDeleteRows = False
+        Me.dgvNotas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.dgvNotas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvNotas.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.colId, Me.colNota})
+        Me.dgvNotas.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.dgvNotas.Location = New System.Drawing.Point(3, 3)
+        Me.dgvNotas.Name = "dgvNotas"
+        Me.dgvNotas.ReadOnly = True
+        Me.dgvNotas.Size = New System.Drawing.Size(577, 254)
+        Me.dgvNotas.TabIndex = 0
+        '
+        'colId
+        '
+        Me.colId.DataPropertyName = "codigo"
+        Me.colId.FillWeight = 20.0!
+        Me.colId.HeaderText = "Código"
+        Me.colId.Name = "colId"
+        Me.colId.ReadOnly = True
+        '
+        'colNota
+        '
+        Me.colNota.DataPropertyName = "nota"
+        Me.colNota.FillWeight = 150.0!
+        Me.colNota.HeaderText = "Notas"
+        Me.colNota.Name = "colNota"
+        Me.colNota.ReadOnly = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -662,6 +710,8 @@ Partial Class Form1
         CType(Me.DgvTributos, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabPage4.ResumeLayout(False)
         CType(Me.DgvSumas, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.TabPage5.ResumeLayout(False)
+        CType(Me.dgvNotas, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -722,4 +772,8 @@ Partial Class Form1
     Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
+    Friend WithEvents TabPage5 As TabPage
+    Friend WithEvents dgvNotas As DataGridView
+    Friend WithEvents colId As DataGridViewTextBoxColumn
+    Friend WithEvents colNota As DataGridViewTextBoxColumn
 End Class

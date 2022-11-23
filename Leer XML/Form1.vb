@@ -104,6 +104,9 @@ Public Class Form1
 
         DgvSumas.AutoGenerateColumns = False
         DgvSumas.DataSource = Comprobante.BasesCalculo
+
+        dgvNotas.AutoGenerateColumns = False
+        dgvNotas.DataSource = Comprobante.Notas
     End Sub
 End Class
 

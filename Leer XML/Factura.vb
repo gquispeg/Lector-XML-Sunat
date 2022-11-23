@@ -9,6 +9,7 @@ Public Class Factura
         _Impuestos = New List(Of FacturaImpuestoItem)
         _BasesCalculo = New List(Of FacturaImpuestoItem)
         catalogo = New catalogo
+
         Doc = documentoXml
         NsMgr = documentoNameSpaceManager
 
@@ -27,12 +28,16 @@ Public Class Factura
                 _Items.Add(New FacturaItem(Doc, i))
             Next
         Next
-        'Tributos general
-        '/Invoice/cac:TaxTotal/cac:TaxSubtotal
-        '/Invoice/cac:PaymentTerms
-        'Dim taxSubTotal = Doc.SelectSingleNode("cac:TaxTotal", NsMgr).SelectNodes("")
 
-
+        'Notas de la factura
+        TagUserName = {"cbc:Note"}
+        Notas = New List(Of FacturaNota)
+        For Each tagName As String In TagUserName
+            Dim UserNameNode As XmlNodeList = Doc.GetElementsByTagName(tagName)
+            For i As Integer = 0 To UserNameNode.Count - 1
+                Notas.Add(New FacturaNota(Doc, i))
+            Next
+        Next
 
         'condiciones de pago
         TagUserName = {"cac:PaymentTerms"}
@@ -75,6 +80,7 @@ Public Class Factura
         End Get
     End Property
 
+    ReadOnly Property Notas As List(Of FacturaNota)
     Private Shared _Impuestos As List(Of FacturaImpuestoItem)
     ReadOnly Property Impuestos As List(Of FacturaImpuestoItem)
         Get
@@ -632,5 +638,19 @@ Public Class Factura
         Property Nombre As String
         Property Base As Double
         Property Monto As Double
+    End Class
+    Class FacturaNota
+        ReadOnly Property Codigo As String
+        ReadOnly Property Nota As String
+
+        Sub New(ByVal xxml As XmlDocument, ByVal orden As Integer)
+            Dim XmlItem As XmlDocument = xxml
+
+            Try
+                Nota = XmlItem.SelectNodes("/tns:Invoice/cbc:Note", NsMgr)(orden).InnerText
+                Codigo = XmlItem.SelectNodes("/tns:Invoice/cbc:Note/@languageLocaleID", NsMgr)(orden).InnerText
+            Catch ex As Exception
+            End Try
+        End Sub
     End Class
 End Class
