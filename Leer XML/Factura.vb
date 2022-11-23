@@ -53,7 +53,13 @@ Public Class Factura
     ReadOnly Property FirmaDigital As New FacturaFirmaDigital
     ReadOnly Property Emisor As New FacturaEmisor
     ReadOnly Property Cliente As New FacturaCliente
-    ReadOnly Property IGV As New FacturaIgv
+    Private Shared _IGV As FacturaIgv
+    ReadOnly Property IGV As FacturaIgv
+        Get
+            Return _IGV
+        End Get
+    End Property
+
 
     Private _Items As List(Of FacturaItem)
     ReadOnly Property Items As List(Of FacturaItem)
@@ -123,6 +129,7 @@ Public Class Factura
                         Case "1000"
                             _1000Base = base
                             _1000Monto = monto
+                            _IGV = New FacturaIgv(XmlItem, i, base, monto)
                             _Impuestos.Add(New FacturaImpuestoItem("IGV Impuesto General a las Ventas", base, monto))
                             _BasesCalculo.Add(New FacturaImpuestoItem("IGV Impuesto General a las Ventas", base, monto))
                         Case "1016"
@@ -435,44 +442,28 @@ Public Class Factura
         End Property
     End Class
     Class FacturaIgv
-        Sub New()
+        Sub New(ByVal nodo As XmlDocument, ByVal indice As Integer, ByVal base As Double, ByVal impuesto As Double)
+            MontoBase = nodo.SelectNodes("/tns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cbc:TaxableAmount", NsMgr)(indice).InnerText
+            MontoIgv = nodo.SelectNodes("/tns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cbc:TaxAmount", NsMgr)(indice).InnerText
+            Id = nodo.SelectNodes("/tns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cac:TaxScheme/cbc:ID", NsMgr)(indice).InnerText
+            Nombre = nodo.SelectNodes("/tns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cac:TaxScheme/cbc:Name", NsMgr)(indice).InnerText
+            Iso = nodo.SelectNodes("/tns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cac:TaxScheme/cbc:TaxTypeCode", NsMgr)(indice).InnerText
+
+            Try
+                Porcentaje = nodo.SelectNodes("/tns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cbc:Percent", NsMgr)(indice).InnerText & " %"
+            Catch ex As Exception
+                Porcentaje = FormatNumber(impuesto / base * 100, 0) & " %"
+            End Try
 
         End Sub
-
-        ReadOnly Property MontoBase As String
-            Get
-                Return Doc.SelectSingleNode("/tns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cbc:TaxableAmount", NsMgr).InnerText
-            End Get
-        End Property
+        ReadOnly Property MontoBase As Double
         ReadOnly Property Porcentaje As String
-            Get
-                Try
-                    Return Doc.SelectSingleNode("/tns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cbc:Percent", NsMgr).InnerText & "%"
-                Catch ex As Exception
-                    Return "S/D"
-                End Try
-            End Get
-        End Property
-        ReadOnly Property MontoIgv As String
-            Get
-                Return Doc.SelectSingleNode("/tns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cbc:Percent", NsMgr).InnerText
-            End Get
-        End Property
+        ReadOnly Property MontoIgv As Double
         ReadOnly Property Id As String
-            Get
-                Return Doc.SelectSingleNode("/tns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cac:TaxScheme/cbc:ID", NsMgr).InnerText
-            End Get
-        End Property
         ReadOnly Property Nombre As String
-            Get
-                Return Doc.SelectSingleNode("/tns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cac:TaxScheme/cbc:Name", NsMgr).InnerText
-            End Get
-        End Property
-        ReadOnly Property ISO As String
-            Get
-                Return Doc.SelectSingleNode("/tns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cac:TaxScheme/cbc:TaxTypeCode", NsMgr).InnerText
-            End Get
-        End Property
+        ReadOnly Property Iso As String
+
+
     End Class
     Class FacturaItem
         Private XmlItem As XmlDocument
