@@ -86,7 +86,7 @@ Public Class Form1
         TxtEmision.Text = Comprobante.Documento.FechaEmision.ToShortDateString
 
         TxtSubTotal.Text = Comprobante.Sumas.IgvBase
-        TxtGratuita.Text = Comprobante.Sumas.GratuitoBase 
+        TxtGratuita.Text = Comprobante.Sumas.GratuitoBase
         TxtGravada.Text = Comprobante.Sumas.IgvBase
         LblIgvPorcentaje.Text = Comprobante.IGV.Porcentaje
         TxtIgvMonto.Text = Comprobante.Sumas.IgvMonto
@@ -101,6 +101,9 @@ Public Class Form1
 
         DgvTributos.AutoGenerateColumns = False
         DgvTributos.DataSource = Comprobante.Impuestos
+
+        DgvSumas.AutoGenerateColumns = False
+        DgvSumas.DataSource = Comprobante.BasesCalculo
     End Sub
 End Class
 
