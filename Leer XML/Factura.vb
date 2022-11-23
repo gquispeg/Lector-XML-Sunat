@@ -34,7 +34,7 @@ Public Class Factura
         Notas = New List(Of FacturaNota)
         For Each tagName As String In TagUserName
             Dim UserNameNode As XmlNodeList = Doc.GetElementsByTagName(tagName)
-            For i As Integer = 0 To UserNameNode.Count - 1
+            For i As Integer = 1 To UserNameNode.Count-1
                 Notas.Add(New FacturaNota(Doc, i))
             Next
         Next
@@ -647,8 +647,10 @@ Public Class Factura
             Dim XmlItem As XmlDocument = xxml
 
             Try
-                Nota = XmlItem.SelectNodes("/tns:Invoice/cbc:Note", NsMgr)(orden).InnerText
-                Codigo = XmlItem.SelectNodes("/tns:Invoice/cbc:Note/@languageLocaleID", NsMgr)(orden).InnerText
+                Nota = XmlItem.SelectSingleNode("/tns:Invoice/cbc:Note[" & orden & "]", NsMgr).InnerText
+                'Nota = XmlItem.SelectNodes("/tns:Invoice/cbc:Note", NsMgr)(orden).InnerText
+                'Codigo = XmlItem.SelectNodes("/tns:Invoice/cbc:Note/@languageLocaleID", NsMgr)(orden).InnerText
+                Codigo = XmlItem.SelectSingleNode("/tns:Invoice/cbc:Note[" & orden & "]/@languageLocaleID", NsMgr).InnerText
             Catch ex As Exception
             End Try
         End Sub
