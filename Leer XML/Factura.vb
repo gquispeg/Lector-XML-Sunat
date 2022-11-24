@@ -5,6 +5,7 @@ Public Class Factura
     Private Shared Doc As XmlDocument
     Private Shared NsMgr As XmlNamespaceManager
     Private Shared catalogo As New catalogo
+
     Sub New(ByVal documentoXml As XmlDocument, ByVal documentoNameSpaceManager As XmlNamespaceManager)
         _Impuestos = New List(Of FacturaImpuestoItem)
         _BasesCalculo = New List(Of FacturaImpuestoItem)
@@ -114,7 +115,7 @@ Public Class Factura
     End Class
     Class FacturaSumas
         Sub New()
-
+            'sumas
             Dim TagUserName As String() = {"cac:TaxTotal"}
             For Each tagName As String In TagUserName
                 Dim UserNameNode As XmlNodeList = Doc.GetElementsByTagName(tagName)
@@ -168,6 +169,22 @@ Public Class Factura
                             _Impuestos.Add(New FacturaImpuestoItem("Otros tributos", base, monto))
                             _BasesCalculo.Add(New FacturaImpuestoItem("Otros tributos", base, monto))
                     End Select
+                Next
+            Next
+
+            'monto en letras
+            TagUserName = {"cbc:Note"}
+            For Each tagName As String In TagUserName
+                Dim UserNameNode As XmlNodeList = Doc.GetElementsByTagName(tagName)
+                For i As Integer = 1 To UserNameNode.Count
+                    Try
+                        Dim x As New FacturaNota(Doc, i)
+                        If x.Codigo = "1000" Then
+                            TotalFacturaEnLetra = x.Nota
+                            Exit Sub
+                        End If
+                    Catch ex As Exception
+                    End Try
                 Next
             Next
         End Sub
@@ -276,10 +293,6 @@ Public Class Factura
             End Get
         End Property
         ReadOnly Property TotalFacturaEnLetra As String
-            Get
-                Return Doc.SelectSingleNode("/tns:Invoice/cbc:Note", NsMgr).InnerText
-            End Get
-        End Property
     End Class
     Class FacturaDocumento
         ReadOnly Property Numero As String
