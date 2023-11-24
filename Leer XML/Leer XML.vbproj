@@ -71,7 +71,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="catalogo.vb" />
-    <Compile Include="Factura.vb" />
+    <Compile Include="Entidad\Invoice.vb" />
+    <Compile Include="Entidad\Xml.vb" />
     <Compile Include="Form1.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -97,6 +98,13 @@
     <Compile Include="FrmPreliminar.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FrmXml.Designer.vb">
+      <DependentUpon>FrmXml.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmXml.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Logica\XmlBL.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -125,6 +133,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPreliminar.resx">
       <DependentUpon>FrmPreliminar.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmXml.resx">
+      <DependentUpon>FrmXml.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
