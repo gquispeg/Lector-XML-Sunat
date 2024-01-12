@@ -22,3 +22,41 @@ C:\Users\GIANCARLO\Desktop\Leer XML\obj\Debug\Leer XML.vbproj.GenerateResource.C
 D:\Repositorios\Leer XML\obj\Debug\Leer_XML.FrmPreliminar.resources
 D:\Repositorios\Leer XML\obj\Debug\Leer_XML.FrmCliente.resources
 D:\Repositorios\Leer XML\obj\Debug\Leer_XML.FrmEmisor.resources
+D:\Repositorios\Lector-XML-Sunat\Leer XML\bin\Debug\Leer XML.exe
+D:\Repositorios\Lector-XML-Sunat\Leer XML\bin\Debug\Leer XML.pdb
+D:\Repositorios\Lector-XML-Sunat\Leer XML\bin\Debug\Leer XML.xml
+D:\Repositorios\Lector-XML-Sunat\Leer XML\obj\Debug\Leer_XML.Form1.resources
+D:\Repositorios\Lector-XML-Sunat\Leer XML\obj\Debug\Leer_XML.FrmCliente.resources
+D:\Repositorios\Lector-XML-Sunat\Leer XML\obj\Debug\Leer_XML.FrmEmisor.resources
+D:\Repositorios\Lector-XML-Sunat\Leer XML\obj\Debug\Leer_XML.FrmPreliminar.resources
+D:\Repositorios\Lector-XML-Sunat\Leer XML\obj\Debug\Leer_XML.Resources.resources
+D:\Repositorios\Lector-XML-Sunat\Leer XML\obj\Debug\Leer XML.vbproj.GenerateResource.cache
+D:\Repositorios\Lector-XML-Sunat\Leer XML\obj\Debug\Leer XML.vbproj.CoreCompileInputs.cache
+D:\Repositorios\Lector-XML-Sunat\Leer XML\obj\Debug\Leer XML.exe
+D:\Repositorios\Lector-XML-Sunat\Leer XML\obj\Debug\Leer XML.xml
+D:\Repositorios\Lector-XML-Sunat\Leer XML\obj\Debug\Leer XML.pdb
+D:\Formateo\Repositorios\Lector-XML-Sunat\Leer XML\bin\Debug\Leer XML.exe
+D:\Formateo\Repositorios\Lector-XML-Sunat\Leer XML\bin\Debug\Leer XML.pdb
+D:\Formateo\Repositorios\Lector-XML-Sunat\Leer XML\bin\Debug\Leer XML.xml
+D:\Formateo\Repositorios\Lector-XML-Sunat\Leer XML\obj\Debug\Leer XML.vbproj.AssemblyReference.cache
+D:\Formateo\Repositorios\Lector-XML-Sunat\Leer XML\obj\Debug\Leer_XML.Form1.resources
+D:\Formateo\Repositorios\Lector-XML-Sunat\Leer XML\obj\Debug\Leer_XML.FrmCliente.resources
+D:\Formateo\Repositorios\Lector-XML-Sunat\Leer XML\obj\Debug\Leer_XML.FrmEmisor.resources
+D:\Formateo\Repositorios\Lector-XML-Sunat\Leer XML\obj\Debug\Leer_XML.FrmPreliminar.resources
+D:\Formateo\Repositorios\Lector-XML-Sunat\Leer XML\obj\Debug\Leer_XML.Resources.resources
+D:\Formateo\Repositorios\Lector-XML-Sunat\Leer XML\obj\Debug\Leer XML.vbproj.GenerateResource.cache
+D:\Formateo\Repositorios\Lector-XML-Sunat\Leer XML\obj\Debug\Leer XML.vbproj.CoreCompileInputs.cache
+D:\Formateo\Repositorios\Lector-XML-Sunat\Leer XML\obj\Debug\Leer XML.exe
+D:\Formateo\Repositorios\Lector-XML-Sunat\Leer XML\obj\Debug\Leer XML.xml
+D:\Formateo\Repositorios\Lector-XML-Sunat\Leer XML\obj\Debug\Leer XML.pdb
+D:\Formateo\Repositorios\Lector-XML-Sunat\Leer XML\obj\Debug\Leer_XML.FrmXml.resources
+D:\Formateo\Repositorios\Lector-XML-Sunat\Leer XML\bin\Debug\Leer XML.exe.manifest
+D:\Formateo\Repositorios\Lector-XML-Sunat\Leer XML\bin\Debug\Leer XML.application
+D:\Formateo\Repositorios\Lector-XML-Sunat\Leer XML\obj\Debug\Leer XML.exe.manifest
+D:\Formateo\Repositorios\Lector-XML-Sunat\Leer XML\obj\Debug\Leer XML.application
+D:\Repositorios\Lector-XML-Sunat\Leer XML\bin\Debug\Leer XML.exe.manifest
+D:\Repositorios\Lector-XML-Sunat\Leer XML\bin\Debug\Leer XML.application
+D:\Repositorios\Lector-XML-Sunat\Leer XML\obj\Debug\Leer XML.vbproj.AssemblyReference.cache
+D:\Repositorios\Lector-XML-Sunat\Leer XML\obj\Debug\Leer_XML.FrmXml.resources
+D:\Repositorios\Lector-XML-Sunat\Leer XML\obj\Debug\Leer XML.exe.manifest
+D:\Repositorios\Lector-XML-Sunat\Leer XML\obj\Debug\Leer XML.application

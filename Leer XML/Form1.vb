@@ -81,8 +81,8 @@ Public Class Form1
         DgvTributos.Rows.Clear()
         For Each impuesto As TaxTotalType In Factura.TaxTotal
             DgvTributos.Rows.Add({impuesto.TaxSubtotal(0).TaxCategory.TaxScheme.Name.Value,
-                                 impuesto.TaxSubtotal(0).TaxableAmount.Value,
                                  impuesto.TaxSubtotal(0).TaxCategory.TaxScheme.ID.Value,
+                                 impuesto.TaxSubtotal(0).TaxableAmount.Value,
                                  impuesto.TaxSubtotal(0).TaxAmount.Value})
         Next
 
@@ -98,8 +98,8 @@ Public Class Form1
                               })
                     Catch ex As Exception
                         DgvCondicion.Rows.Add({condicion.PaymentMeansID(0).Value,
-                                condicion.Amount.Value,
-                                ""
+                                "",
+                                condicion.Amount.Value
                               })
                     End Try
                 Case Else
