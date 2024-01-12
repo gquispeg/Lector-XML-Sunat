@@ -97,10 +97,7 @@ Public Class Form1
                                 condicion.PaymentDueDate.Value.ToShortDateString
                               })
                     Catch ex As Exception
-                        DgvCondicion.Rows.Add({condicion.PaymentMeansID(0).Value,
-                                "",
-                                condicion.Amount.Value
-                              })
+                        DgvCondicion.Rows.Add({condicion.PaymentMeansID(0).Value, "", Factura.IssueDate.Value.ToShortDateString})
                     End Try
                 Case Else
                     DgvTributos.Rows.Add({condicion.ID.Value,
