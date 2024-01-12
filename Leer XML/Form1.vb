@@ -64,7 +64,7 @@ Public Class Form1
         TxtSubTotal.Text = factura.LegalMonetaryTotal.LineExtensionAmount.Value
         TxtGratuita.Text = 0 'factura.TaxTotal(0).TaxAmount.Value
         TxtGravada.Text = factura.TaxTotal(0).TaxSubtotal(0).TaxableAmount.Value
-        LblIgvPorcentaje.Text = Factura.TaxTotal(0).TaxSubtotal(0).TaxCategory.Percent.Value
+        LblIgvPorcentaje.Text = "" 'Factura.TaxTotal(0).TaxSubtotal(0).TaxCategory.Percent.Value
         TxtIgvMonto.Text = factura.TaxTotal(0).TaxSubtotal(0).TaxAmount.Value
         TxtTotalFactura.Text = factura.LegalMonetaryTotal.PayableAmount.Value
 
