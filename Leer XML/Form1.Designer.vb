@@ -23,13 +23,13 @@ Partial Class Form1
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TxtArchivoXml = New System.Windows.Forms.TextBox()
         Me.TxtEmisor = New System.Windows.Forms.TextBox()
@@ -71,9 +71,6 @@ Partial Class Form1
         Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Tributos = New System.Windows.Forms.TabPage()
         Me.DgvTributos = New System.Windows.Forms.DataGridView()
-        Me.colNombre = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colBase = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colMonto = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Forma = New System.Windows.Forms.TabPage()
         Me.DgvCondicion = New System.Windows.Forms.DataGridView()
         Me.Items = New System.Windows.Forms.TabPage()
@@ -91,6 +88,10 @@ Partial Class Form1
         Me.colFormaPagoId = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.colFormaPagoMonto = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.colFormaPagoFecha = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colNombre = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ColTributoCodigo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colBase = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colMonto = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Notas.SuspendLayout()
         CType(Me.dgvNotas, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Bases.SuspendLayout()
@@ -446,9 +447,9 @@ Partial Class Form1
         'DataGridViewTextBoxColumn2
         '
         Me.DataGridViewTextBoxColumn2.DataPropertyName = "base"
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle8.Format = "n2"
-        Me.DataGridViewTextBoxColumn2.DefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle1.Format = "n2"
+        Me.DataGridViewTextBoxColumn2.DefaultCellStyle = DataGridViewCellStyle1
         Me.DataGridViewTextBoxColumn2.HeaderText = "Base"
         Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
         Me.DataGridViewTextBoxColumn2.ReadOnly = True
@@ -456,9 +457,9 @@ Partial Class Form1
         'DataGridViewTextBoxColumn3
         '
         Me.DataGridViewTextBoxColumn3.DataPropertyName = "monto"
-        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle9.Format = "n2"
-        Me.DataGridViewTextBoxColumn3.DefaultCellStyle = DataGridViewCellStyle9
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle2.Format = "n2"
+        Me.DataGridViewTextBoxColumn3.DefaultCellStyle = DataGridViewCellStyle2
         Me.DataGridViewTextBoxColumn3.HeaderText = "Monto"
         Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
         Me.DataGridViewTextBoxColumn3.ReadOnly = True
@@ -480,41 +481,13 @@ Partial Class Form1
         Me.DgvTributos.AllowUserToDeleteRows = False
         Me.DgvTributos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.DgvTributos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DgvTributos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.colNombre, Me.colBase, Me.colMonto})
+        Me.DgvTributos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.colNombre, Me.ColTributoCodigo, Me.colBase, Me.colMonto})
         Me.DgvTributos.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DgvTributos.Location = New System.Drawing.Point(3, 3)
         Me.DgvTributos.Name = "DgvTributos"
         Me.DgvTributos.ReadOnly = True
         Me.DgvTributos.Size = New System.Drawing.Size(577, 254)
         Me.DgvTributos.TabIndex = 0
-        '
-        'colNombre
-        '
-        Me.colNombre.DataPropertyName = "nombre"
-        Me.colNombre.FillWeight = 250.0!
-        Me.colNombre.HeaderText = "Nombre"
-        Me.colNombre.Name = "colNombre"
-        Me.colNombre.ReadOnly = True
-        '
-        'colBase
-        '
-        Me.colBase.DataPropertyName = "base"
-        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle10.Format = "n2"
-        Me.colBase.DefaultCellStyle = DataGridViewCellStyle10
-        Me.colBase.HeaderText = "Base"
-        Me.colBase.Name = "colBase"
-        Me.colBase.ReadOnly = True
-        '
-        'colMonto
-        '
-        Me.colMonto.DataPropertyName = "monto"
-        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle11.Format = "n2"
-        Me.colMonto.DefaultCellStyle = DataGridViewCellStyle11
-        Me.colMonto.HeaderText = "Monto"
-        Me.colMonto.Name = "colMonto"
-        Me.colMonto.ReadOnly = True
         '
         'Forma
         '
@@ -620,30 +593,30 @@ Partial Class Form1
         '
         'colUnitario
         '
-        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle12.Format = "N2"
-        DataGridViewCellStyle12.NullValue = Nothing
-        Me.colUnitario.DefaultCellStyle = DataGridViewCellStyle12
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle5.Format = "N2"
+        DataGridViewCellStyle5.NullValue = Nothing
+        Me.colUnitario.DefaultCellStyle = DataGridViewCellStyle5
         Me.colUnitario.HeaderText = "Unitario"
         Me.colUnitario.Name = "colUnitario"
         Me.colUnitario.ReadOnly = True
         '
         'colValorVenta
         '
-        DataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle13.Format = "N2"
-        DataGridViewCellStyle13.NullValue = Nothing
-        Me.colValorVenta.DefaultCellStyle = DataGridViewCellStyle13
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle6.Format = "N2"
+        DataGridViewCellStyle6.NullValue = Nothing
+        Me.colValorVenta.DefaultCellStyle = DataGridViewCellStyle6
         Me.colValorVenta.HeaderText = "ValorVenta"
         Me.colValorVenta.Name = "colValorVenta"
         Me.colValorVenta.ReadOnly = True
         '
         'colIgv
         '
-        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle14.Format = "N2"
-        DataGridViewCellStyle14.NullValue = Nothing
-        Me.colIgv.DefaultCellStyle = DataGridViewCellStyle14
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle7.Format = "N2"
+        DataGridViewCellStyle7.NullValue = Nothing
+        Me.colIgv.DefaultCellStyle = DataGridViewCellStyle7
         Me.colIgv.HeaderText = "IGV"
         Me.colIgv.Name = "colIgv"
         Me.colIgv.ReadOnly = True
@@ -676,6 +649,40 @@ Partial Class Form1
         Me.colFormaPagoFecha.HeaderText = "Fecha"
         Me.colFormaPagoFecha.Name = "colFormaPagoFecha"
         Me.colFormaPagoFecha.ReadOnly = True
+        '
+        'colNombre
+        '
+        Me.colNombre.DataPropertyName = "nombre"
+        Me.colNombre.FillWeight = 250.0!
+        Me.colNombre.HeaderText = "Nombre"
+        Me.colNombre.Name = "colNombre"
+        Me.colNombre.ReadOnly = True
+        '
+        'ColTributoCodigo
+        '
+        Me.ColTributoCodigo.HeaderText = "Codigo"
+        Me.ColTributoCodigo.Name = "ColTributoCodigo"
+        Me.ColTributoCodigo.ReadOnly = True
+        '
+        'colBase
+        '
+        Me.colBase.DataPropertyName = "base"
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle3.Format = "n2"
+        Me.colBase.DefaultCellStyle = DataGridViewCellStyle3
+        Me.colBase.HeaderText = "Base"
+        Me.colBase.Name = "colBase"
+        Me.colBase.ReadOnly = True
+        '
+        'colMonto
+        '
+        Me.colMonto.DataPropertyName = "monto"
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle4.Format = "n2"
+        Me.colMonto.DefaultCellStyle = DataGridViewCellStyle4
+        Me.colMonto.HeaderText = "Monto"
+        Me.colMonto.Name = "colMonto"
+        Me.colMonto.ReadOnly = True
         '
         'Form1
         '
@@ -776,9 +783,6 @@ Partial Class Form1
     Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
     Friend WithEvents Tributos As TabPage
     Friend WithEvents DgvTributos As DataGridView
-    Friend WithEvents colNombre As DataGridViewTextBoxColumn
-    Friend WithEvents colBase As DataGridViewTextBoxColumn
-    Friend WithEvents colMonto As DataGridViewTextBoxColumn
     Friend WithEvents Forma As TabPage
     Friend WithEvents DgvCondicion As DataGridView
     Friend WithEvents Items As TabPage
@@ -796,4 +800,8 @@ Partial Class Form1
     Friend WithEvents colFormaPagoId As DataGridViewTextBoxColumn
     Friend WithEvents colFormaPagoMonto As DataGridViewTextBoxColumn
     Friend WithEvents colFormaPagoFecha As DataGridViewTextBoxColumn
+    Friend WithEvents colNombre As DataGridViewTextBoxColumn
+    Friend WithEvents ColTributoCodigo As DataGridViewTextBoxColumn
+    Friend WithEvents colBase As DataGridViewTextBoxColumn
+    Friend WithEvents colMonto As DataGridViewTextBoxColumn
 End Class

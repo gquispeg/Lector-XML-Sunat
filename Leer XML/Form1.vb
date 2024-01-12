@@ -68,6 +68,7 @@ Public Class Form1
         TxtIgvMonto.Text = factura.TaxTotal(0).TaxSubtotal(0).TaxAmount.Value
         TxtTotalFactura.Text = factura.LegalMonetaryTotal.PayableAmount.Value
 
+        'Carga de notas
         dgvNotas.Rows.Clear()
         For Each nota As NoteType In factura.Note
             dgvNotas.Rows.Add({nota.languageLocaleID, nota.Value})
@@ -76,6 +77,16 @@ Public Class Form1
             End If
         Next
 
+        'Carga de tributos
+        DgvTributos.Rows.Clear()
+        For Each impuesto As TaxTotalType In Factura.TaxTotal
+            DgvTributos.Rows.Add({impuesto.TaxSubtotal(0).TaxCategory.TaxScheme.Name.Value,
+                                 impuesto.TaxSubtotal(0).TaxableAmount.Value,
+                                 impuesto.TaxSubtotal(0).TaxCategory.TaxScheme.ID.Value,
+                                 impuesto.TaxSubtotal(0).TaxAmount.Value})
+        Next
+
+        'Carga de formas de pago
         DgvCondicion.Rows.Clear()
         For Each condicion As PaymentTermsType In factura.PaymentTerms
             Select Case condicion.ID.Value.ToString.ToUpper
@@ -91,6 +102,11 @@ Public Class Form1
                                 ""
                               })
                     End Try
+                Case Else
+                    DgvTributos.Rows.Add({condicion.ID.Value,
+                                          condicion.PaymentMeansID(0).Value,
+                                          "",
+                                          condicion.Amount.Value})
             End Select
         Next
 
@@ -106,8 +122,5 @@ Public Class Form1
                 item.TaxTotal(0).TaxSubtotal(0).TaxableAmount.Value * item.TaxTotal(0).TaxSubtotal(0).TaxCategory.Percent.Value / 100
                               })
         Next
-
-        DgvTributos.Rows.Clear()
-
     End Sub
 End Class
