@@ -64,7 +64,7 @@ Public Class Form1
         TxtSubTotal.Text = factura.LegalMonetaryTotal.LineExtensionAmount.Value
         TxtGratuita.Text = 0 'factura.TaxTotal(0).TaxAmount.Value
         TxtGravada.Text = factura.TaxTotal(0).TaxSubtotal(0).TaxableAmount.Value
-        'LblIgvPorcentaje.Text = factura.TaxTotal(0).TaxSubtotal(0).TaxCategory.Percent.Value
+        LblIgvPorcentaje.Text = Factura.TaxTotal(0).TaxSubtotal(0).TaxCategory.Percent.Value
         TxtIgvMonto.Text = factura.TaxTotal(0).TaxSubtotal(0).TaxAmount.Value
         TxtTotalFactura.Text = factura.LegalMonetaryTotal.PayableAmount.Value
 
@@ -78,19 +78,20 @@ Public Class Form1
 
         DgvCondicion.Rows.Clear()
         For Each condicion As PaymentTermsType In factura.PaymentTerms
-            Try
-                DgvCondicion.Rows.Add({condicion.PaymentMeansID(0).Value,
-                                  condicion.ID.Value,
-                                  condicion.Amount.Value,
-                                  IIf(condicion.PaymentMeansID(0).Value Is Nothing, "", condicion.PaymentMeansID(0).Value)
-                                  })
-            Catch ex As Exception
-                DgvCondicion.Rows.Add({condicion.PaymentMeansID(0).Value,
-                                  condicion.ID.Value,
-                                  "",
-                                  IIf(condicion.PaymentMeansID(0).Value Is Nothing, "", condicion.PaymentMeansID(0).Value)
-                                  })
-            End Try
+            Select Case condicion.ID.Value.ToString.ToUpper
+                Case "FORMAPAGO"
+                    Try
+                        DgvCondicion.Rows.Add({condicion.PaymentMeansID(0).Value,
+                                condicion.Amount.Value,
+                                condicion.PaymentDueDate.Value.ToShortDateString
+                              })
+                    Catch ex As Exception
+                        DgvCondicion.Rows.Add({condicion.PaymentMeansID(0).Value,
+                                condicion.Amount.Value,
+                                ""
+                              })
+                    End Try
+            End Select
         Next
 
         DgvItems.Rows.Clear()
@@ -99,9 +100,10 @@ Public Class Form1
                 item.InvoicedQuantity.Value,
                 "",
                 item.Item.Description(0).Value,
-                item.TaxTotal(0).TaxSubtotal(0).TaxableAmount.Value,
-                item.TaxTotal(0).TaxSubtotal(0).TaxAmount.Value,
-                item.Price.PriceAmount.Value + item.TaxTotal(0).TaxSubtotal(0).TaxAmount.Value
+                item.Price.PriceAmount.Value,'unitario
+                item.TaxTotal(0).TaxSubtotal(0).TaxableAmount.Value,'unitario x cantidad
+                item.PricingReference.AlternativeConditionPrice(0).PriceAmount.Value,'unitario+igv
+                item.TaxTotal(0).TaxSubtotal(0).TaxableAmount.Value * item.TaxTotal(0).TaxSubtotal(0).TaxCategory.Percent.Value / 100
                               })
         Next
 
