@@ -1,15 +1,15 @@
 ﻿Imports System.Xml
 
 Public Class FrmXml
-    Private Info As Xml
+    Private Info ' As Xml
     Private VersionUbl, VersionCustomization As String
 
     'Sub New(ByVal extension As UBLExtensionsType, ByVal vUbl As String, ByVal vCustomization As String)
-    Sub New(ByVal xml As Xml)
+    Sub New() '(ByVal xml As Xml)
         'Info = extension
         'VersionUbl = vUbl
         'VersionCustomization = vCustomization
-        Info = xml
+        'Info = Xml
         InitializeComponent()
     End Sub
     Private Sub FrmXml_Load(sender As Object, e As EventArgs) Handles MyBase.Load

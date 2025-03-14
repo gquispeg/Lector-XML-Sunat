@@ -1,0 +1,12 @@
+﻿################################################################################
+# Este archivo .gitignore ha sido creado automáticamente por Microsoft(R) Visual Studio.
+################################################################################
+
+/Core/.vs
+/Core/bin/Debug
+/Core/obj/Debug
+/Entidades/bin/Debug
+/Entidades/obj/Debug
+/Leer XML/.vs
+/Leer XML/bin
+/Leer XML/obj
