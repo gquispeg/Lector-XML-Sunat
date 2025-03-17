@@ -19,7 +19,7 @@ Namespace Commons
                     .SumTributos = ele.TaxTotal(0).TaxAmount.Value
                 }
                 item.NomMedida = (New CatalogoBL).Obtener("03", item.CodMedida)
-                item.Afectacion = (New TributoBL).Obtener(ele.TaxTotal(0).TaxSubtotal(0))
+                item.Afectacion = TributoBL.Obtener(ele.TaxTotal(0).TaxSubtotal(0))
                 If item.Afectacion.CodTributo = "9996" Then
                     item.MtoValorUnitario = ele.PricingReference.AlternativeConditionPrice(0).PriceAmount.Value
                     item.MtoPrecioVentaUnitario = 0

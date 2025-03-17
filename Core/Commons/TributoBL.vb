@@ -13,7 +13,7 @@ Public Class TributoBL
             .NomTributo = afecta.TaxCategory.TaxScheme.Name.Value
             .Base = afecta.TaxableAmount.Value
             .Tasa = afecta.TaxCategory.Percent.Value
-            .Afectacion = (New AfectacionIgvBL).Obtener(afecta.TaxCategory)
+            .Afectacion = AfectacionIgvBL.Obtener(afecta.TaxCategory)
         End With
 
         Return rspta
