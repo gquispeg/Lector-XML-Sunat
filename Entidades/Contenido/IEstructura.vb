@@ -7,5 +7,6 @@ Namespace Contenido
         Property Emisor As Company
         Property Cliente As Company
         Property Items As List(Of Item)
+        Property Leyendas As List(Of Leyenda)
     End Interface
 End Namespace

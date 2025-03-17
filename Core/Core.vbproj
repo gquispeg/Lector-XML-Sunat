@@ -71,6 +71,7 @@
     <Compile Include="Commons\DireccionBL.vb" />
     <Compile Include="Commons\DocumentoBL.vb" />
     <Compile Include="Commons\ItemBL.vb" />
+    <Compile Include="Commons\LeyendaBL.vb" />
     <Compile Include="Commons\TotalesBL.vb" />
     <Compile Include="Commons\TributoBL.vb" />
     <Compile Include="Commons\Utils.vb" />

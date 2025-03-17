@@ -79,9 +79,14 @@ Partial Class Form1
         Me.ColGratuito = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ColIgv = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ColTotal = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DgvLeyenda = New System.Windows.Forms.DataGridView()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.ColLeyendaCodigo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ColLeyendaDescripcion = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         CType(Me.DgvItems, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DgvLeyenda, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label1
@@ -533,11 +538,52 @@ Partial Class Form1
         Me.ColTotal.Name = "ColTotal"
         Me.ColTotal.ReadOnly = True
         '
+        'DgvLeyenda
+        '
+        Me.DgvLeyenda.AllowUserToAddRows = False
+        Me.DgvLeyenda.AllowUserToDeleteRows = False
+        Me.DgvLeyenda.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.DgvLeyenda.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DgvLeyenda.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ColLeyendaCodigo, Me.ColLeyendaDescripcion})
+        Me.DgvLeyenda.Location = New System.Drawing.Point(16, 458)
+        Me.DgvLeyenda.Name = "DgvLeyenda"
+        Me.DgvLeyenda.ReadOnly = True
+        Me.DgvLeyenda.RowHeadersVisible = False
+        Me.DgvLeyenda.Size = New System.Drawing.Size(431, 121)
+        Me.DgvLeyenda.TabIndex = 60
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(13, 437)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(53, 13)
+        Me.Label6.TabIndex = 61
+        Me.Label6.Text = "Leyendas"
+        '
+        'ColLeyendaCodigo
+        '
+        Me.ColLeyendaCodigo.DataPropertyName = "codigo"
+        Me.ColLeyendaCodigo.FillWeight = 50.0!
+        Me.ColLeyendaCodigo.HeaderText = "Codigo"
+        Me.ColLeyendaCodigo.Name = "ColLeyendaCodigo"
+        Me.ColLeyendaCodigo.ReadOnly = True
+        '
+        'ColLeyendaDescripcion
+        '
+        Me.ColLeyendaDescripcion.DataPropertyName = "descripcion"
+        Me.ColLeyendaDescripcion.FillWeight = 300.0!
+        Me.ColLeyendaDescripcion.HeaderText = "Descripcion"
+        Me.ColLeyendaDescripcion.Name = "ColLeyendaDescripcion"
+        Me.ColLeyendaDescripcion.ReadOnly = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(876, 593)
+        Me.Controls.Add(Me.Label6)
+        Me.Controls.Add(Me.DgvLeyenda)
         Me.Controls.Add(Me.DgvItems)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
@@ -568,6 +614,7 @@ Partial Class Form1
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
         CType(Me.DgvItems, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DgvLeyenda, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -622,4 +669,8 @@ Partial Class Form1
     Friend WithEvents ColGratuito As DataGridViewTextBoxColumn
     Friend WithEvents ColIgv As DataGridViewTextBoxColumn
     Friend WithEvents ColTotal As DataGridViewTextBoxColumn
+    Friend WithEvents DgvLeyenda As DataGridView
+    Friend WithEvents Label6 As Label
+    Friend WithEvents ColLeyendaCodigo As DataGridViewTextBoxColumn
+    Friend WithEvents ColLeyendaDescripcion As DataGridViewTextBoxColumn
 End Class

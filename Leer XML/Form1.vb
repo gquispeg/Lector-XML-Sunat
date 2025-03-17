@@ -56,6 +56,8 @@ Public Class Form1
 
         CargarTotales(origen.Totales)
         CargarItems(origen.Items)
+        DgvLeyenda.DataSource = origen.Leyendas
+
     End Sub
 
     Private Sub CargarTotales(totales As Totales)

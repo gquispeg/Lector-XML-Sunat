@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commons\AfectacionIgv.vb" />
+    <Compile Include="Commons\Leyenda.vb" />
     <Compile Include="Commons\Totales.vb" />
     <Compile Include="Commons\Tributo.vb" />
     <Compile Include="Commons\Catalogo.vb" />

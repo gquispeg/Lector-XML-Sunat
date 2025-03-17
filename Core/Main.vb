@@ -83,13 +83,10 @@ Public Class Main
             .Cliente = CompanyBL.Obtener(origen.AccountingCustomerParty.Party),
             .Documento = DocumentoBL.Obtener(origen),
             .Items = ItemBL.Obtener(origen),
-            .Totales = TotalesBL.Obtener(origen)
+            .Totales = TotalesBL.Obtener(origen),
+            .Leyendas = LeyendaBL.Obtener(origen.Note)
         }
 
         Return invoice
     End Function
-
-
-
-
 End Class

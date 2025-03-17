@@ -9,6 +9,7 @@ Namespace Contenido
         Public Property Cliente As Company Implements IEstructura.Cliente
         Public Property Documento As Documento Implements IEstructura.Documento
         Public Property Items As List(Of Item) Implements IEstructura.Items
+        Public Property Leyendas As List(Of Leyenda) Implements IEstructura.Leyendas
         Public Property Totales As Totales
     End Class
 End Namespace
