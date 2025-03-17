@@ -14,6 +14,11 @@ Public Class Form1
         f.ShowDialog()
     End Sub
 
+    Private Sub BtnDetracciones_Click(sender As Object, e As EventArgs) Handles BtnDetracciones.Click
+        Dim f As New FrmDetracciones(Documento.Detracciones)
+        f.showdialog
+    End Sub
+
     Private Sub BtnArchivo_Click(sender As Object, e As EventArgs) Handles BtnArchivoXml.Click
         Dim OpenFileDialog1 As New OpenFileDialog With {
             .Filter = "Todos los Archivos|*.*|xml|*.xml|archo xml|*.xml|Text Xml|*.xml",
@@ -56,6 +61,7 @@ Public Class Form1
 
         CargarTotales(origen.Totales)
         CargarItems(origen.Items)
+        CargarDetracciones(origen.Detracciones)
         DgvLeyenda.DataSource = origen.Leyendas
 
     End Sub
@@ -89,5 +95,14 @@ Public Class Form1
                 .Cells("ColTotal").Value = item.Total
             End With
         Next
+    End Sub
+    Private Sub CargarDetracciones(detracciones As Detraccion)
+        If detracciones Is Nothing Then
+            TxtDetraccionesPorcentaje.Text = ""
+            TxtDetraccionesMonto.Text = ""
+        Else
+            TxtDetraccionesPorcentaje.Text = detracciones.Porcentaje
+            TxtDetraccionesMonto.Text = detracciones.Monto
+        End If
     End Sub
 End Class

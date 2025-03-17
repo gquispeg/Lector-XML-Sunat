@@ -8,5 +8,6 @@ Namespace Contenido
         Property Cliente As Company
         Property Items As List(Of Item)
         Property Leyendas As List(Of Leyenda)
+        Property Detracciones As Detraccion
     End Interface
 End Namespace

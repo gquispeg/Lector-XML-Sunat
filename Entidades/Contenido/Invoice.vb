@@ -11,5 +11,6 @@ Namespace Contenido
         Public Property Items As List(Of Item) Implements IEstructura.Items
         Public Property Leyendas As List(Of Leyenda) Implements IEstructura.Leyendas
         Public Property Totales As Totales
+        Public Property Detracciones As Detraccion Implements IEstructura.Detracciones
     End Class
 End Namespace

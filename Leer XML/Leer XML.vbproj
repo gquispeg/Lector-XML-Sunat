@@ -126,6 +126,12 @@
     <Compile Include="FrmCompany.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FrmDetracciones.Designer.vb">
+      <DependentUpon>FrmDetracciones.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmDetracciones.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FrmPreliminar.Designer.vb">
       <DependentUpon>FrmPreliminar.vb</DependentUpon>
     </Compile>
@@ -162,6 +168,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmCompany.resx">
       <DependentUpon>FrmCompany.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDetracciones.resx">
+      <DependentUpon>FrmDetracciones.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPreliminar.resx">
       <DependentUpon>FrmPreliminar.vb</DependentUpon>

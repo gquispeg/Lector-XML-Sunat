@@ -68,6 +68,7 @@
     <Compile Include="Commons\AfectacionIgvBL.vb" />
     <Compile Include="Commons\CatalogoBL.vb" />
     <Compile Include="Commons\CompanyBL.vb" />
+    <Compile Include="Commons\DetraccionesBL.vb" />
     <Compile Include="Commons\DireccionBL.vb" />
     <Compile Include="Commons\DocumentoBL.vb" />
     <Compile Include="Commons\ItemBL.vb" />

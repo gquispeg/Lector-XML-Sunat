@@ -84,7 +84,8 @@ Public Class Main
             .Documento = DocumentoBL.Obtener(origen),
             .Items = ItemBL.Obtener(origen),
             .Totales = TotalesBL.Obtener(origen),
-            .Leyendas = LeyendaBL.Obtener(origen.Note)
+            .Leyendas = LeyendaBL.Obtener(origen.Note),
+            .Detracciones = DetraccionesBL.Obtener(origen)
         }
 
         Return invoice
