@@ -37,8 +37,8 @@ Namespace Commons
                 _Correlativo = value
             End Set
         End Property
-        Property FechaEmision As Date
-        Property HoraEmision As DateTime
+        Property FechaEmision As String
+        Property HoraEmision As String
         Property Vencimiento As String
 
         Property TipOperacion As String

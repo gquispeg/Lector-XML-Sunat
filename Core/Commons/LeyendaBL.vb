@@ -5,8 +5,12 @@ Namespace Commons
     Public Class LeyendaBL
         Friend Shared Function Obtener(leyendas As NoteType()) As List(Of Leyenda)
             Dim rspta As New List(Of Leyenda)
+            If leyendas Is Nothing Then
+                Return rspta
+            End If
+
             For Each leyenda As NoteType In leyendas
-                rspta.Add(New Entidades.Commons.Leyenda(leyenda.languageLocaleID, leyenda.Value))
+                rspta.Add(New Leyenda(leyenda.languageLocaleID, leyenda.Value))
             Next
 
             Return rspta

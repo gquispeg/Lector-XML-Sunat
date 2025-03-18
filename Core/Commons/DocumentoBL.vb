@@ -12,7 +12,7 @@ Namespace Commons
                     origen.InvoiceTypeCode.Value,
                     origen.ID.Value) With {
                 .FechaEmision = origen.IssueDate.Value,
-                .HoraEmision = origen.IssueTime.Value,
+                .HoraEmision = ValidarNothing(origen.IssueTime),
                 .TipOperacion = origen.InvoiceTypeCode.listID,
                 .TipMoneda = origen.DocumentCurrencyCode.Value,
                 .Vencimiento = ValidarNothing(origen.DueDate)

@@ -45,6 +45,17 @@ Public Class Main
             End If
         Next
 
+        'Mostrar otro tipo de documento
+        tipos.Add(New Tipo("urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2", "07", "Nota credito", "Note-2", rutaXml))
+        tipos.Add(New Tipo("urn:oasis:names:specification:ubl:schema:xsd:DebitNote-2", "08", "Nota debito", "Note-2", rutaXml))
+        tipos.Add(New Tipo("urn:oasis:names:specification:ubl:schema:xsd:DespatchAdvice-2", "09", "Guia de remisión", "", rutaXml))
+        tipos.Add(New Tipo("urn:oasis:names:specification:ubl:schema:xsd:ApplicationResponse-2", "00", "Respuesta CDR", "", rutaXml))
+        For Each tipo As Tipo In tipos
+            If xml.Contains(tipo.Raiz) Then
+                Throw New Exception(tipo.Nombre)
+            End If
+        Next
+
         Throw New Exception("No se reconoce el tipo de documento")
     End Function
 
@@ -73,9 +84,14 @@ Public Class Main
         Dim ubl As New Ubl With {
             .VersionUbl = origen.UBLVersionID.Value,
             .VersionEstructura = origen.CustomizationID.Value,
-            .Tipo = origen.InvoiceTypeCode.Value,
-            .Hash = origen.UBLExtensions(0).ExtensionContent.FirstChild.InnerText
+            .Tipo = origen.InvoiceTypeCode.Value
         }
+
+        If origen.UBLExtensions(0).ExtensionContent IsNot Nothing Then
+            If origen.UBLExtensions(0).ExtensionContent.FirstChild IsNot Nothing Then
+                ubl.Hash = origen.UBLExtensions(0).ExtensionContent.FirstChild.InnerText
+            End If
+        End If
         ubl.NomTipo = _catalogos.Obtener("01", ubl.Tipo)
         Dim invoice As New Invoice With {
             .Ubl = ubl,

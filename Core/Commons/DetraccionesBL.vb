@@ -14,18 +14,21 @@ Namespace Commons
                 End If
             End If
 
-            Dim terms = origen.PaymentTerms(0)
-            Dim means = origen.PaymentMeans(0)
+            For Each ele As PaymentTermsType In origen.PaymentTerms
+                If ele.PaymentMeansID IsNot Nothing Then
+                    If ele.PaymentPercent IsNot Nothing Then
+                        Return New Detraccion With {
+                            .Codigo = ele.PaymentMeansID(0).Value,
+                            .Nombre = (New CatalogoBL).Obtener("54", ele.PaymentMeansID(0).Value),
+                            .CuentaBancoNacion = origen.PaymentMeans(0).PayeeFinancialAccount.ID.Value,
+                            .Porcentaje = ele.PaymentPercent.Value,
+                            .Monto = ele.Amount.Value
+                        }
+                    End If
+                End If
+            Next
 
-            Dim rspta As New Detraccion With {
-                .Codigo = terms.PaymentMeansID(0).Value,
-                .Nombre = (New CatalogoBL).Obtener("54", terms.PaymentMeansID(0).Value),
-                .CuentaBancoNacion = means.PayeeFinancialAccount.ID.Value,
-                .Porcentaje = terms.PaymentPercent.Value,
-                .Monto = terms.Amount.Value
-            }
-
-            Return rspta
+            Return Nothing
         End Function
 
     End Class
