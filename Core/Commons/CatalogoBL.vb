@@ -3148,7 +3148,14 @@ Namespace Commons
                 New Catalogo("1002", "Operación Sujeta a Detracción- Recursos Hidrobiológicos"),
                 New Catalogo("1003", "Operación Sujeta a Detracción- Servicios de Transporte Pasajeros"),
                 New Catalogo("1004", "Operación Sujeta a Detracción- Servicios de Transporte Carga"),
-                New Catalogo("2001", "Operación Sujeta a Percepción")
+                New Catalogo("2001", "Operación Sujeta a Percepción"),
+                New Catalogo("2100", "Créditos a empresas "),
+                New Catalogo("2101", "Créditos de consumo revolvente"),
+                New Catalogo("2102", "Créditos de consumo no revolvente"),
+                New Catalogo("2103", "Otras operaciones no gravadas – Empresas del sistema financiero y cooperativas de ahorro y crédito no autorizadas a captar recursos del público "),
+                New Catalogo("2104", "Otras operaciones no gravadas – Empresas del sistema de seguros"),
+                New Catalogo("2105", "Operaciones que realizan las Administradoras Privadas de Fondos de Pensiones que estén comprendidas en el inciso j) del artículo 2 de TUO de la Ley del IGV e ISC"),
+                New Catalogo("2106", "Venta nacional a turistas – Tax Free")
             }
         End Function
 
