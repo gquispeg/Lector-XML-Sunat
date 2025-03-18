@@ -16,7 +16,7 @@ Public Class Form1
 
     Private Sub BtnDetracciones_Click(sender As Object, e As EventArgs) Handles BtnDetracciones.Click
         Dim f As New FrmDetracciones(Documento.Detracciones)
-        f.showdialog
+        f.ShowDialog()
     End Sub
 
     Private Sub BtnArchivo_Click(sender As Object, e As EventArgs) Handles BtnArchivoXml.Click
@@ -100,9 +100,11 @@ Public Class Form1
         If detracciones Is Nothing Then
             TxtDetraccionesPorcentaje.Text = ""
             TxtDetraccionesMonto.Text = ""
+            BtnDetracciones.Enabled = False
         Else
             TxtDetraccionesPorcentaje.Text = detracciones.Porcentaje
             TxtDetraccionesMonto.Text = detracciones.Monto
+            BtnDetracciones.Enabled = True
         End If
     End Sub
 End Class
