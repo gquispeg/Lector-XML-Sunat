@@ -81,20 +81,9 @@ Public Class Main
     End Function
 
     Private Function ExtraeInvoice(origen As Invoice_2_1) As Invoice
-        Dim ubl As New Ubl With {
-            .VersionUbl = origen.UBLVersionID.Value,
-            .VersionEstructura = origen.CustomizationID.Value,
-            .Tipo = origen.InvoiceTypeCode.Value
-        }
 
-        If origen.UBLExtensions(0).ExtensionContent IsNot Nothing Then
-            If origen.UBLExtensions(0).ExtensionContent.FirstChild IsNot Nothing Then
-                ubl.Hash = origen.UBLExtensions(0).ExtensionContent.FirstChild.InnerText
-            End If
-        End If
-        ubl.NomTipo = _catalogos.Obtener("01", ubl.Tipo)
         Dim invoice As New Invoice With {
-            .Ubl = ubl,
+            .Ubl = UblBL.Obtener(origen, _catalogos),
             .Emisor = CompanyBL.Obtener(origen.AccountingSupplierParty.Party),
             .Cliente = CompanyBL.Obtener(origen.AccountingCustomerParty.Party),
             .Documento = DocumentoBL.Obtener(origen),

@@ -1,31 +1,20 @@
-﻿Imports System.Xml
+﻿Imports Entidades.Commons
 
 Public Class FrmXml
-    Private Info ' As Xml
-    Private VersionUbl, VersionCustomization As String
-
-    'Sub New(ByVal extension As UBLExtensionsType, ByVal vUbl As String, ByVal vCustomization As String)
-    Sub New() '(ByVal xml As Xml)
-        'Info = extension
-        'VersionUbl = vUbl
-        'VersionCustomization = vCustomization
-        'Info = Xml
+    Dim estructura As Ubl
+    Sub New(ubl As Ubl)
+        estructura = ubl
         InitializeComponent()
     End Sub
     Private Sub FrmXml_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        txtUbl.Text = Info.Ubl
-        TxtTipo.Text = Info.Tipo
-        TxtEstructura.Text = Info.Estructura
-        TxtHash.Text = Info.Hash
+        txtUbl.Text = estructura.VersionUbl
+        TxtTipo.Text = estructura.Tipo
+        TxtNombreTipo.Text = estructura.NomTipo
+        TxtEstructura.Text = estructura.VersionEstructura
+        TxtHash.Text = estructura.Hash
 
-        TxtCanonical.Text = Info.Canonical
-        TxtSignature.Text = Info.Signature
-        TxtTransform.Text = Info.Transform
-        TxtMetodoHash.Text = Info.MetodoHash
-
-        TxtEmisor.Text = Info.EmisorNombre
-        TxtCertificadoEmisor.Text = Info.EmisorCertificado
-        TxtFirmaEmisor.Text = Info.EmisorFirma
+        TxtSignature.Text = estructura.Firma
+        TxtCertificado.Text = estructura.Certificado
     End Sub
     Private Sub BtnSalir_Click(sender As Object, e As EventArgs) Handles BtnSalir.Click
         Me.Close()

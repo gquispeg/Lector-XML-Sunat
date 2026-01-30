@@ -46,6 +46,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -92,7 +93,15 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Sunat\Firma\CanonicalizationMethod.vb" />
+    <Compile Include="Sunat\Firma\DigestMethod.vb" />
+    <Compile Include="Sunat\Firma\KeyInfo.vb" />
+    <Compile Include="Sunat\Firma\SignatureMethod.vb" />
+    <Compile Include="Sunat\Firma\X509Data.vb" />
     <Compile Include="Sunat\Invoice-2.1.vb" />
+    <Compile Include="Sunat\Firma\Reference.vb" />
+    <Compile Include="Sunat\Firma\Signature.vb" />
+    <Compile Include="Sunat\Firma\SignedInfo.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">

@@ -23,13 +23,13 @@ Partial Class Form1
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TxtArchivoXml = New System.Windows.Forms.TextBox()
         Me.TxtEmisor = New System.Windows.Forms.TextBox()
@@ -88,6 +88,10 @@ Partial Class Form1
         Me.BtnDetracciones = New System.Windows.Forms.Button()
         Me.TxtDetraccionesPorcentaje = New System.Windows.Forms.TextBox()
         Me.Label16 = New System.Windows.Forms.Label()
+        Me.Label17 = New System.Windows.Forms.Label()
+        Me.TxtCuotas = New System.Windows.Forms.TextBox()
+        Me.BtnCuotas = New System.Windows.Forms.Button()
+        Me.BtnXml = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         CType(Me.DgvItems, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -481,64 +485,64 @@ Partial Class Form1
         '
         'ColValorUnitario
         '
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle8.Format = "N2"
-        DataGridViewCellStyle8.NullValue = Nothing
-        Me.ColValorUnitario.DefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle1.Format = "N2"
+        DataGridViewCellStyle1.NullValue = Nothing
+        Me.ColValorUnitario.DefaultCellStyle = DataGridViewCellStyle1
         Me.ColValorUnitario.HeaderText = "Unitario"
         Me.ColValorUnitario.Name = "ColValorUnitario"
         Me.ColValorUnitario.ReadOnly = True
         '
         'ColGravado
         '
-        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle9.Format = "n2"
-        Me.ColGravado.DefaultCellStyle = DataGridViewCellStyle9
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle2.Format = "n2"
+        Me.ColGravado.DefaultCellStyle = DataGridViewCellStyle2
         Me.ColGravado.HeaderText = "Gravado"
         Me.ColGravado.Name = "ColGravado"
         Me.ColGravado.ReadOnly = True
         '
         'ColInafecto
         '
-        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle10.Format = "n2"
-        Me.ColInafecto.DefaultCellStyle = DataGridViewCellStyle10
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle3.Format = "n2"
+        Me.ColInafecto.DefaultCellStyle = DataGridViewCellStyle3
         Me.ColInafecto.HeaderText = "Inafecto"
         Me.ColInafecto.Name = "ColInafecto"
         Me.ColInafecto.ReadOnly = True
         '
         'ColExonerado
         '
-        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle11.Format = "n2"
-        Me.ColExonerado.DefaultCellStyle = DataGridViewCellStyle11
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle4.Format = "n2"
+        Me.ColExonerado.DefaultCellStyle = DataGridViewCellStyle4
         Me.ColExonerado.HeaderText = "Exonerado"
         Me.ColExonerado.Name = "ColExonerado"
         Me.ColExonerado.ReadOnly = True
         '
         'ColGratuito
         '
-        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle12.Format = "n2"
-        Me.ColGratuito.DefaultCellStyle = DataGridViewCellStyle12
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle5.Format = "n2"
+        Me.ColGratuito.DefaultCellStyle = DataGridViewCellStyle5
         Me.ColGratuito.HeaderText = "Gratuito"
         Me.ColGratuito.Name = "ColGratuito"
         Me.ColGratuito.ReadOnly = True
         '
         'ColIgv
         '
-        DataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle13.Format = "n2"
-        Me.ColIgv.DefaultCellStyle = DataGridViewCellStyle13
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle6.Format = "n2"
+        Me.ColIgv.DefaultCellStyle = DataGridViewCellStyle6
         Me.ColIgv.HeaderText = "IGV"
         Me.ColIgv.Name = "ColIgv"
         Me.ColIgv.ReadOnly = True
         '
         'ColTotal
         '
-        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle14.Format = "n2"
-        Me.ColTotal.DefaultCellStyle = DataGridViewCellStyle14
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle7.Format = "n2"
+        Me.ColTotal.DefaultCellStyle = DataGridViewCellStyle7
         Me.ColTotal.HeaderText = "Total"
         Me.ColTotal.Name = "ColTotal"
         Me.ColTotal.ReadOnly = True
@@ -629,11 +633,53 @@ Partial Class Form1
         Me.Label16.TabIndex = 66
         Me.Label16.Text = "%"
         '
+        'Label17
+        '
+        Me.Label17.AutoSize = True
+        Me.Label17.Location = New System.Drawing.Point(546, 543)
+        Me.Label17.Name = "Label17"
+        Me.Label17.Size = New System.Drawing.Size(40, 13)
+        Me.Label17.TabIndex = 67
+        Me.Label17.Text = "Cuotas"
+        '
+        'TxtCuotas
+        '
+        Me.TxtCuotas.Location = New System.Drawing.Point(589, 539)
+        Me.TxtCuotas.Name = "TxtCuotas"
+        Me.TxtCuotas.ReadOnly = True
+        Me.TxtCuotas.Size = New System.Drawing.Size(32, 20)
+        Me.TxtCuotas.TabIndex = 68
+        Me.TxtCuotas.Text = " "
+        Me.TxtCuotas.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'BtnCuotas
+        '
+        Me.BtnCuotas.Image = CType(resources.GetObject("BtnCuotas.Image"), System.Drawing.Image)
+        Me.BtnCuotas.Location = New System.Drawing.Point(624, 538)
+        Me.BtnCuotas.Name = "BtnCuotas"
+        Me.BtnCuotas.Size = New System.Drawing.Size(23, 23)
+        Me.BtnCuotas.TabIndex = 69
+        Me.BtnCuotas.UseVisualStyleBackColor = True
+        '
+        'BtnXml
+        '
+        Me.BtnXml.Location = New System.Drawing.Point(502, 8)
+        Me.BtnXml.Name = "BtnXml"
+        Me.BtnXml.Size = New System.Drawing.Size(61, 23)
+        Me.BtnXml.TabIndex = 42
+        Me.BtnXml.Text = "XML"
+        Me.BtnXml.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
+        Me.BtnXml.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(876, 593)
+        Me.Controls.Add(Me.BtnXml)
+        Me.Controls.Add(Me.BtnCuotas)
+        Me.Controls.Add(Me.TxtCuotas)
+        Me.Controls.Add(Me.Label17)
         Me.Controls.Add(Me.Label16)
         Me.Controls.Add(Me.TxtDetraccionesPorcentaje)
         Me.Controls.Add(Me.BtnDetracciones)
@@ -735,4 +781,8 @@ Partial Class Form1
     Friend WithEvents BtnDetracciones As Button
     Friend WithEvents TxtDetraccionesPorcentaje As TextBox
     Friend WithEvents Label16 As Label
+    Friend WithEvents Label17 As Label
+    Friend WithEvents TxtCuotas As TextBox
+    Friend WithEvents BtnCuotas As Button
+    Friend WithEvents BtnXml As Button
 End Class

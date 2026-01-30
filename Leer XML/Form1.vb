@@ -2,6 +2,15 @@
 Imports Entidades.Contenido
 
 Public Class Form1
+    Sub New()
+        InitializeComponent()
+    End Sub
+    Sub New(rutaArchivo As String)
+        InitializeComponent()
+        TxtArchivoXml.Text = rutaArchivo
+        Procesar(rutaArchivo)
+    End Sub
+
     Private Documento As IEstructura
 
     Private Sub BtnCliente_Click(sender As Object, e As EventArgs) Handles btnCliente.Click
@@ -26,24 +35,27 @@ Public Class Form1
         }
 
         If OpenFileDialog1.ShowDialog() = Windows.Forms.DialogResult.OK Then
-            Dim rutaArchivo As String = OpenFileDialog1.FileName
-            TxtArchivoXml.Text = rutaArchivo
+            Procesar(OpenFileDialog1.FileName)
+        End If
+    End Sub
 
-            Dim core As New Core.Main
+    Private Sub Procesar(rutaArchivo As String)
+        TxtArchivoXml.Text = rutaArchivo
 
-            Try
-                core.LoadXmlFile(rutaArchivo)
-                Documento = core.Extraer()
-            Catch ex As Exception
-                MsgBox(ex.Message)
-                Exit Sub
-            End Try
+        Dim core As New Core.Main
 
-            If Documento Is Nothing Then
-                MsgBox("Ocurrió un error al cargar el archivo")
-            Else
-                CargarDetalle(Documento)
-            End If
+        Try
+            core.LoadXmlFile(rutaArchivo)
+            Documento = core.Extraer()
+        Catch ex As Exception
+            MsgBox(ex.Message)
+            Exit Sub
+        End Try
+
+        If Documento Is Nothing Then
+            MsgBox("Ocurrió un error al cargar el archivo")
+        Else
+            CargarDetalle(Documento)
         End If
     End Sub
 
@@ -51,7 +63,7 @@ Public Class Form1
         TxtEmisor.Text = origen.Emisor.NumDocIdentidad & " - " & origen.Emisor.RazonSocial
         TxtCliente.Text = origen.Cliente.NumDocIdentidad & " - " & origen.Cliente.RazonSocial
         TxtFechaEmision.Text = origen.Documento.FechaEmision
-        TxtHoraEmision.Text = Format(origen.Documento.HoraEmision, "hh:mm:ss")
+        TxtHoraEmision.Text = origen.Documento.HoraEmision
         TxtVencimiento.Text = origen.Documento.Vencimiento
 
         TxtDocumentoTipo.Text = origen.Documento.TipDocumento & " - " & origen.Documento.NomDocumento
@@ -106,5 +118,10 @@ Public Class Form1
             TxtDetraccionesMonto.Text = detracciones.Monto
             BtnDetracciones.Enabled = True
         End If
+    End Sub
+
+    Private Sub BtnXml_Click(sender As Object, e As EventArgs) Handles BtnXml.Click
+        Dim f As New FrmXml(Documento.Ubl)
+        f.ShowDialog()
     End Sub
 End Class
